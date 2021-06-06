@@ -3,26 +3,47 @@
 
 typedef	struct	s_node
 {
-	int Key;
+	int key;
 	struct s_node *prev;
 	struct s_node *next;
 }			t_node;
 
-t_node	*init_node(t_node *nil)
+t_node	*init_node(t_node *node)
 {
-	nil = (t_node *)malloc(sizeof(t_node));
-	nil->next = nil;
-	nil->prev = nil;
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return NULL;
+	node->next = node;
+	node->prev = node;
 
-	return nil;
+	return node;
+}
+
+t_node	*insert(int key, t_node **node)
+{
+	t_node *x;
+
+	x = (t_node *)malloc(sizeof(t_node));
+	x->key = key;
+	x->next = *node->next;
+	*node->next->prev = x;
+	*node->next = x;
+	x->prev = *node;
+
+	return x;
 }
 
 int		main()
 {
-	t_node *nil;
+	t_node *node;
 
-	nil = init_node(nil);
-	printf("%p\n", nil);
-	printf("%p\n", nil->next);
-	printf("%p\n", nil->prev);
+	node = init_node(node);
+	printf("%p\n", node);
+	printf("%p\n", node->next);
+	printf("%p\n", node->prev);
+
+	t_node *x;
+	
+	x = insert(99, &node);
+	printf("%d\n", *x);
 }
