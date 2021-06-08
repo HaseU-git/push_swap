@@ -21,7 +21,7 @@ t_node	*init_node(t_node *node)
 }
 
 // return NULL if malloc fail
-t_node	*insert(int key, t_node **node)
+t_node	*insert_first(int key, t_node *node)
 {
 	t_node *x;
 
@@ -29,10 +29,10 @@ t_node	*insert(int key, t_node **node)
 	if (!x)
 		return NULL;
 	x->key = key;
-	x->next = (*node)->next;
-	(*node)->next->prev = x;
-	(*node)->next = x;
-	x->prev = (*node);
+	x->next = node->next;
+	node->next->prev = x;
+	node->next = x;
+	x->prev = node;
 
 	return x;
 }
@@ -48,6 +48,34 @@ void	delete_node(t_node **t, t_node *nil)
 	(*t) = NULL;
 }
 
+t_node	*insert_last(int key, t_node *nil)
+{
+	t_node *x;
+	t_node *last;
+
+	x = (t_node *)malloc(sizeof(t_node));
+	if (!x)
+		return NULL;
+	last = nil;
+	while (last->next != nil)
+	{
+		last = last->next;
+	}
+	x->key = key;
+	x->next = last->next;
+	last->next->prev = x;
+	last->next = x;
+	x->prev = last;
+
+	return x;
+}
+
+
+t_node	*pop(t_node *nil)
+{
+	return nil->next;
+}
+
 int		main()
 {
  	t_node *nil;
@@ -59,7 +87,7 @@ int		main()
  
  	t_node *x;
  	
- 	x = insert(99, &nil);
+ 	x = insert_first(99, &nil);
  	printf("%d\n", x->key);
  	printf("%p\n", x);
 
@@ -69,11 +97,31 @@ int		main()
 
 //	free(nil->prev);
 //	free(nil->next);
-	nil->prev = NULL;
-	nil->next = NULL;
+//	nil->prev = NULL;
+//	nil->next = NULL;
+
+//	printf("%d\n", pop(nil)->key);
+
+	t_node *last = insert_last(100, nil);
+	printf("%d\n", last->key);
+
+	insert_last(101, nil);
+	insert_first(98, &nil);
+
+	printf("----------\n");
+	t_node *test = nil;
+	while (test->next!= nil)
+	{
+		printf("%d\n", test->key);
+		test = test->next;
+	}
+	printf("%d\n", test->key);
+	printf("%d\n", test->next->key);
+	printf("----------\n");
 
 	free(nil);
 	nil = NULL;
+
 
 //もしmallocがうまくできたら以下の挙動になる  
 //	int	*test = (int *)malloc(999999999);
