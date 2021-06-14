@@ -70,10 +70,74 @@ t_node	*insert_last(int key, t_node *nil)
 	return x;
 }
 
-
 t_node	*pop(t_node *nil)
 {
-	return nil->next;
+	t_node *ret;
+
+	ret = nil->next;
+	nil->next = nil->next->next;
+	nil->next->prev = nil;
+	return ret;
+}
+
+t_node	*pop_last(t_node *nil)
+{
+	t_node *last;
+	t_node *ret;
+
+	last = nil;
+	while (last->next != nil)
+	{
+		last = last->next;
+	}
+	ret = last;
+	nil->prev = nil->prev->prev;
+	nil->prev->next = nil;
+	return ret;
+}
+
+void	add_pointer_first(t_node *nil, t_node *to_add)
+{
+	to_add->next = nil->next;
+	nil->next->prev = to_add;
+	nil->next = to_add;
+	to_add->prev = nil;
+}
+
+void	add_pointer_last(t_node *nil, t_node *to_add)
+{
+	t_node *last;
+	
+	last = nil;
+	while (last->next != nil)
+	{
+		last = last->next;
+	}
+	to_add->next = last->next;
+	last->next->prev = to_add;
+	last->next = to_add;
+	to_add->prev = last;
+}
+
+void	swap(t_node *nil)
+{
+	t_node *first;
+	t_node *second;
+
+	first = pop(nil);
+	second = pop(nil);
+	add_pointer_first(nil, first);
+	add_pointer_first(nil, second);
+}
+
+void	rotate(t_node *nil)
+{
+	return (add_pointer_last(nil, pop(nil)));
+}
+
+void	reverse_rotate(t_node *nil)
+{
+	return (add_pointer_first(nil, pop_last(nil)));
 }
 
 int		main()
@@ -87,7 +151,7 @@ int		main()
  
  	t_node *x;
  	
- 	x = insert_first(99, &nil);
+ 	x = insert_first(99, nil);
  	printf("%d\n", x->key);
  	printf("%p\n", x);
 
@@ -106,7 +170,9 @@ int		main()
 	printf("%d\n", last->key);
 
 	insert_last(101, nil);
-	insert_first(98, &nil);
+	insert_first(98, nil);
+
+
 
 	printf("----------\n");
 	t_node *test = nil;
@@ -119,9 +185,45 @@ int		main()
 	printf("%d\n", test->next->key);
 	printf("----------\n");
 
+	swap(nil);
+
+	printf("----------\n");
+	test = nil;
+	while (test->next!= nil)
+	{
+		printf("%d\n", test->key);
+		test = test->next;
+	}
+	printf("%d\n", test->key);
+	printf("%d\n", test->next->key);
+	printf("----------\n");
+
+	rotate(nil);
+	printf("----------\n");
+	test = nil;
+	while (test->next!= nil)
+	{
+		printf("%d\n", test->key);
+		test = test->next;
+	}
+	printf("%d\n", test->key);
+	printf("%d\n", test->next->key);
+	printf("----------\n");
+
+	reverse_rotate(nil);
+	printf("----------\n");
+	test = nil;
+	while (test->next!= nil)
+	{
+		printf("%d\n", test->key);
+		test = test->next;
+	}
+	printf("%d\n", test->key);
+	printf("%d\n", test->next->key);
+	printf("----------\n");
+
 	free(nil);
 	nil = NULL;
-
 
 //もしmallocがうまくできたら以下の挙動になる  
 //	int	*test = (int *)malloc(999999999);
