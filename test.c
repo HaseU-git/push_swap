@@ -211,9 +211,7 @@ int		main()
 	printf("----------\n");
 
 	reverse_rotate(nil);
-	printf("----------\n");
-	test = nil;
-	while (test->next!= nil)
+	printf("----------\n"); test = nil; while (test->next!= nil)
 	{
 		printf("%d\n", test->key);
 		test = test->next;
