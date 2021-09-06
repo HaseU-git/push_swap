@@ -9,6 +9,8 @@
 
 // - intの配列を受け取って、その中央値を返す関数  
 
+
+
 typedef	struct  s_num_array
 {
 	int *elements;
