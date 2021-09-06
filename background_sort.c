@@ -18,10 +18,10 @@ typedef	struct  s_num_array
 
 t_num_array *substitute_for_array(int *array_elements, int array_len)
 {
-    t_num_array array_info;
+    t_num_array *array_info;
     
     array_info = (t_num_array *)malloc(sizeof(t_num_array));
-    if (!array_info)
+    if (array_info == NULL)
 		return NULL;
     array_info->elements = array_elements;
     array_info->len = array_len;
@@ -31,7 +31,6 @@ t_num_array *substitute_for_array(int *array_elements, int array_len)
 int count_list_elements(t_node *nil)
 {
     int list_len;
-    int *unsorted_array;
     t_node *list_ptr;
     
     list_ptr = nil;
@@ -57,7 +56,7 @@ t_num_array *convert_to_array(t_node *nil)
 		return NULL;
     list_ptr = nil->next;
     i = 0;
-    while (list_ptr->next != nil)
+    while (i < list_len)
     {
         unsorted_array[i] = list_ptr->key;
         i++;
@@ -65,3 +64,4 @@ t_num_array *convert_to_array(t_node *nil)
     }
     return (substitute_for_array(list_len, unsorted_array));
 }
+
