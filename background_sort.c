@@ -90,3 +90,20 @@ t_num_array *sort_num_array(t_num_array *array_info)
     }
     return array_info;
 }
+
+int calculate_median(t_num_array *array_info)
+{
+    int array_median;
+
+    if (array_info->len % 2 == 0)
+    {
+        array_median = \
+        (array_info->elements[array_info->len / 2 - 1] + \
+        array_info->elements[array_info->len / 2]) / 2;
+    }
+    else
+    {
+        array_median = array_info->elements[array_info->len / 2];
+    }
+    return array_median;
+}

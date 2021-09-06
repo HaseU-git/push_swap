@@ -137,10 +137,28 @@ t_num_array *sort_num_array(t_num_array *array_info)
     return array_info;
 }
 
+int calculate_median(t_num_array *array_info)
+{
+    int array_median;
+
+    if (array_info->len % 2 == 0)
+    {
+        array_median = \
+        (array_info->elements[array_info->len / 2 - 1] + \
+        array_info->elements[array_info->len / 2]) / 2;
+    }
+    else
+    {
+        array_median = array_info->elements[array_info->len / 2];
+    }
+    return array_median;
+}
+
 int main()
 {
  	t_node *test;
     t_num_array *test_array;
+    int array_median;
  
  	test = init_node(test);
  	printf("%d\n", test->key);
@@ -154,18 +172,26 @@ int main()
  	printf("%d\n", test->next->key);
  	printf("%p\n", test->next);
 
+ 	insert_first(45, test);
+ 	printf("%d\n", test->next->key);
+ 	printf("%p\n", test->next);
+
     test_array = convert_to_array(test);
     printf("el_0:%d\n", test_array->elements[0]);
     printf("el_1:%d\n", test_array->elements[1]);
     printf("len:%d\n", test_array->len);
 
-    printf("--=-=-=-=-=-=-=-=-=sort-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("\n--=-=-=-=-=-=-=-=-=sort-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
     sort_num_array(test_array);
     printf("el_0:%d\n", test_array->elements[0]);
     printf("el_1:%d\n", test_array->elements[1]);
     printf("len:%d\n", test_array->len);
 
+    printf("\n--=-=-=-=-=-=-=-=-=median-=-=-=-=-=-=-=-=-=-=-=\n\n");
+
+    array_median = calculate_median(test_array);
+    printf("%d\n", array_median);
 
     return 0;
 }
