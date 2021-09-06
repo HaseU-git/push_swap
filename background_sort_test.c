@@ -111,6 +111,32 @@ t_num_array *convert_to_array(t_node *nil)
     return (substitute_for_array(unsorted_array, list_len));
 }
 
+t_num_array *sort_num_array(t_num_array *array_info)
+{
+    int i;
+    int j;
+    int tmp;
+
+    i = 0;
+    while (i < array_info->len)
+    {
+        j = i + 1;
+        while (j < array_info->len)
+        {
+            if (array_info->elements[i] > array_info->elements[j])
+            {
+                tmp = array_info->elements[i];
+                array_info->elements[i] = array_info->elements[j];
+                array_info->elements[j] = tmp;
+            }
+
+            j++;
+        }
+        i++;
+    }
+    return array_info;
+}
+
 int main()
 {
  	t_node *test;
@@ -120,17 +146,26 @@ int main()
  	printf("%d\n", test->key);
  	printf("%p\n", test);
  	
- 	insert_first(99, test);
+ 	insert_first(1, test);
  	printf("%d\n", test->next->key);
  	printf("%p\n", test->next);
 
- 	insert_first(1, test);
+ 	insert_first(99, test);
  	printf("%d\n", test->next->key);
  	printf("%p\n", test->next);
 
     test_array = convert_to_array(test);
     printf("el_0:%d\n", test_array->elements[0]);
+    printf("el_1:%d\n", test_array->elements[1]);
     printf("len:%d\n", test_array->len);
+
+    printf("--=-=-=-=-=-=-=-=-=sort-=-=-=-=-=-=-=-=-=-=-=\n");
+
+    sort_num_array(test_array);
+    printf("el_0:%d\n", test_array->elements[0]);
+    printf("el_1:%d\n", test_array->elements[1]);
+    printf("len:%d\n", test_array->len);
+
 
     return 0;
 }

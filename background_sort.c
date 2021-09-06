@@ -65,3 +65,28 @@ t_num_array *convert_to_array(t_node *nil)
     return (substitute_for_array(list_len, unsorted_array));
 }
 
+t_num_array *sort_num_array(t_num_array *array_info)
+{
+    int i;
+    int j;
+    int tmp;
+
+    i = 0;
+    while (i < array_info->len)
+    {
+        j = i + 1;
+        while (j < array_info->len)
+        {
+            if (array_info->elements[i] > array_info->elements[j])
+            {
+                tmp = array_info->elements[i];
+                array_info->elements[i] = array_info->elements[j];
+                array_info->elements[j] = tmp;
+            }
+
+            j++;
+        }
+        i++;
+    }
+    return array_info;
+}
