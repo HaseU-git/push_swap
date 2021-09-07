@@ -1,9 +1,24 @@
 typedef struct  s_process
 {
-    char                operate[2];
+    enum e_operation    *operation;
     struct s_process    *prev;
     struct s_process    *next;
 }               t_process;
+
+enum   e_operation 
+{
+    SA,
+    SB,
+    SS,
+    PA,
+    PB,
+    RA,
+    RB,
+    RR,
+    RRA,
+    RRB,
+    RRR
+}
 
 t_process	*init_process(t_process *process_ptr)
 {
@@ -37,8 +52,6 @@ t_process	*append_process(char *process, t_process *node)
 	return x;
 }
 
-
-
 void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
 {
     t_num_array *list_a;
@@ -50,12 +63,12 @@ void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
     array_median = calculate_median(test_array);
     
     current_ptr = stack_a_nil->next;
-    while (current_ptr->next != stack_a_nil)
+    while (current_ptr != stack_a_nil)
     {
         if (current_ptr->key < array_median)
-        {
-
-        }
+            rotate(stack_a_nil);
+        else
+            push(stack_a, stack_b);
         current_ptr = current_ptr->next;
     }
 }

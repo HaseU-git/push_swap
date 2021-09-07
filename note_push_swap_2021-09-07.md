@@ -19,3 +19,9 @@ void put_larger_halfto_b(t_node *stack_a t_node *stack_b)
 ## 疑問点
 ソートの際に操作したものはどこに記録しておくか？  
 → 連結リストでつなげておく。  
+
+
+
+
+## 問題点
+- メモリリーク  
