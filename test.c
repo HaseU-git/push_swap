@@ -132,12 +132,17 @@ void	swap(t_node *nil)
 
 void	rotate(t_node *nil)
 {
-	return (add_pointer_last(nil, pop(nil)));
+	add_pointer_last(nil, pop(nil));
 }
 
 void	reverse_rotate(t_node *nil)
 {
-	return (add_pointer_first(nil, pop_last(nil)));
+	add_pointer_first(nil, pop_last(nil));
+}
+
+void	push(t_node *stack_one, t_node *stack_two)
+{
+	add_pointer_first(stack_two, pop(stack_one));
 }
 
 int		main()
@@ -226,6 +231,57 @@ int		main()
 //もしmallocがうまくできたら以下の挙動になる  
 //	int	*test = (int *)malloc(999999999);
 //	free(test);
+
+	t_node *stack_a;
+	t_node *stack_b;
+	t_node *tmp_ptr;
+	
+ 	stack_a = init_node(stack_a);
+ 	stack_b = init_node(stack_b);
+
+	insert_last(1, stack_a);
+	insert_last(2, stack_a);
+	insert_last(3, stack_a);
+	insert_last(4, stack_a);
+
+	insert_last(5, stack_b);
+	insert_last(6, stack_b);
+	insert_last(7, stack_b);
+	insert_last(8, stack_b);
+
+	tmp_ptr = stack_a->next;
+    while (tmp_ptr != stack_a)
+	{
+        printf("key: %d\n", tmp_ptr->key);
+		tmp_ptr = tmp_ptr->next;
+	}
+    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+
+	tmp_ptr = stack_b->next;
+    while (tmp_ptr != stack_b)
+	{
+        printf("key: %d\n", tmp_ptr->key);
+		tmp_ptr = tmp_ptr->next;
+	}
+    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+
+	push(stack_a, stack_b);
+
+	tmp_ptr = stack_a->next;
+    while (tmp_ptr != stack_a)
+	{
+        printf("key: %d\n", tmp_ptr->key);
+		tmp_ptr = tmp_ptr->next;
+	}
+    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+
+	tmp_ptr = stack_b->next;
+    while (tmp_ptr != stack_b)
+	{
+        printf("key: %d\n", tmp_ptr->key);
+		tmp_ptr = tmp_ptr->next;
+	}
+    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
 	system("leaks a.out");
 
