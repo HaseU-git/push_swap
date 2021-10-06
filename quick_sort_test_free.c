@@ -277,40 +277,49 @@ t_process	*init_process(t_process *process_ptr)
 	return process_ptr;
 }
 
-void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
+void	free_num_array(t_num_array *array_ptr)
 {
-    t_num_array *array_a;
-    int array_median;
-    t_node *current_ptr;
-    int i;
-
-    array_a = convert_to_array(stack_a_nil);
-    sort_num_array(array_a);
-    array_median = calculate_median(array_a);
-    
-    current_ptr = stack_a_nil->next;
-    i = 0;
-    while (i < array_a->len)
-    {
-        current_ptr = current_ptr->next;
-        if (current_ptr->prev->key > array_median)
-            rotate(stack_a_nil);
-        else
-            push(stack_a_nil, stack_b_nil);
-        i++;
-    }
+	free(array_ptr->elements);
+	array_ptr->elements = NULL;
+	free(array_ptr);
+	array_ptr = NULL;
 }
 
+void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
+{
+	t_num_array *array_a;
+	int array_median;
+	t_node *current_ptr;
+	int i;
+
+	array_a = convert_to_array(stack_a_nil);
+	sort_num_array(array_a);
+	array_median = calculate_median(array_a);
+
+	current_ptr = stack_a_nil->next;
+	i = 0;
+	while (i < array_a->len)
+	{
+		current_ptr = current_ptr->next;
+		if (current_ptr->prev->key > array_median)
+			rotate(stack_a_nil);
+		else
+			push(stack_a_nil, stack_b_nil);
+		i++;
+	}
+	free_num_array(array_a);
+}
 
 int main()
-{
+{	
 	t_node *stack_a;
 	t_node *stack_b;
 	t_node *tmp_ptr;
+	int i;
 	
- 	stack_a = init_node(stack_a);
- 	stack_b = init_node(stack_b);
-
+	stack_a = init_node(stack_a);
+	stack_b = init_node(stack_b);
+	
 	insert_last(1, stack_a);
 	insert_last(2, stack_a);
 	insert_last(3, stack_a);
@@ -321,37 +330,30 @@ int main()
 	insert_last(8, stack_a);
 
 	tmp_ptr = stack_a->next;
-    while (tmp_ptr != stack_a)
+	while (tmp_ptr != stack_a)
 	{
-        printf("key: %d\n", tmp_ptr->key);
+		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
-    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
 	put_smaller_half_to_b(stack_a, stack_b);
 
 	tmp_ptr = stack_a->next;
-    while (tmp_ptr != stack_a)
+	while (tmp_ptr != stack_a)
 	{
-        printf("key: %d\n", tmp_ptr->key);
+		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
-    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
 	tmp_ptr = stack_b->next;
-    while (tmp_ptr != stack_b)
+	while (tmp_ptr != stack_b)
 	{
-        printf("key: %d\n", tmp_ptr->key);
+		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
-    printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    
-	free(stack_a->next);
-	free(stack_a->prev);
-	free(stack_a);
-	free(stack_b->next);
-	free(stack_b->prev);
-	free(stack_b);
+	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
 	system("leaks a.out");
 
