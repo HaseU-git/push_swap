@@ -1,3 +1,7 @@
+---
+marp: true
+---
+
 # note_push_swap
 Date: 2021-05-23
 
