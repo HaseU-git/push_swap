@@ -44,8 +44,11 @@ void	delete_node(t_node **t, t_node *nil)
 		return ;
 	(*t)->prev->next = (*t)->next;
 	(*t)->next->prev = (*t)->prev;
-	free(*t);
-	(*t) = NULL;
+	if (*t != NULL)
+	{
+		free(*t);
+		(*t) = NULL;
+	}
 }
 
 t_node	*insert_last(int key, t_node *nil)
@@ -279,10 +282,16 @@ t_process	*init_process(t_process *process_ptr)
 
 void	free_num_array(t_num_array *array_ptr)
 {
-	free(array_ptr->elements);
-	array_ptr->elements = NULL;
-	free(array_ptr);
-	array_ptr = NULL;
+	if (array_ptr->elements != NULL)
+	{
+		free(array_ptr->elements);
+		array_ptr->elements = NULL;
+	}
+	if (array_ptr != NULL)
+	{
+		free(array_ptr);
+		array_ptr = NULL;
+	}
 }
 
 void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
