@@ -28,3 +28,26 @@ Date: 2021-10-06
 #### 今日やったこと
 
 - mallocで確保したint型の配列のfreeを忘れていて、memory leakになったので直した  
+- クイックソート（分割統治法））の実装方法について考えた  
+
+###### 分割倒置法の擬似コーディング
+
+
+```
+func_half_A_to_B();
+
+void func_qick_sort()
+{
+	int n;
+	int m;
+	
+	n = len(stack_B);
+	if (n < 6)
+		break ;
+	B_to_A();  // mこ移動させる（中央値よりも大きいやつを。）
+	func();
+	rule_sort();
+	B_to_A();  // Aの全部を一番下にくっつける  
+	A_to_B();  // mこ移動させる
+}
+```
