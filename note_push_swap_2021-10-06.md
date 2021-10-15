@@ -51,3 +51,153 @@ void func_qick_sort()
 	A_to_B();  // mこ移動させる
 }
 ```
+
+```python
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[452]:
+
+
+stack_a = list(range(100)) # [0, 1, 2, ... 96, 97, 98, 99]
+import random
+random.shuffle(stack_a)
+stack_b = []
+stack_a
+
+
+# In[453]:
+
+
+import statistics
+
+def half_A_to_B():
+    
+    median = statistics.median(stack_a)
+    index_list = []
+    i = 0
+    while (i < len(stack_a)):
+        if (stack_a[i] < median):
+            stack_b.insert(0, stack_a[i])
+            index_list.append(i)
+        i += 1
+    for i in sorted(index_list, reverse=True):
+        stack_a.pop(i)
+
+
+# In[454]:
+
+
+def half_B_to_A():
+    
+    median = statistics.median(stack_b)
+    index_list = []
+    i = 0
+    while (i < len(stack_b)):
+        if (stack_b[i] > median):
+            stack_a.insert(0, stack_b[i])
+            index_list.append(i)
+        i += 1
+    for i in sorted(index_list, reverse=True):
+        stack_b.pop(i)
+    return len(index_list)
+
+
+# In[455]:
+
+
+def all_B_to_A():
+    
+    i = 0
+    while (i < len(stack_b)):
+            stack_a.append(stack_b[0])
+            stack_b.pop(0)
+
+
+# In[456]:
+
+
+def count_A_to_B(count):
+    i = 0
+    
+    while (i < count):
+            stack_b.insert(0, stack_a[0])
+            stack_a.pop(0)
+            i += 1
+
+
+# In[457]:
+
+
+def quick_sort():
+    stack_b_len = len(stack_b)
+    count = 0
+
+    if (stack_b_len < 6):
+        return
+    count = half_B_to_A()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    quick_sort()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    stack_b.sort()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    all_B_to_A()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    count_A_to_B(count)
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    quick_sort()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    stack_b.sort()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+    
+    all_B_to_A()
+    
+    print("-=-=-=-=-=-\n")
+    print("stack_a: " + str(stack_a) + "\n")
+    print("stack_b: " + str(stack_b) + "\n")
+    print("-=-=-=-=-=-\n")
+
+
+# In[458]:
+
+
+half_A_to_B()
+quick_sort()
+
+
+# In[ ]:
+```
