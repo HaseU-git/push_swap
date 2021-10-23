@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -97,79 +96,153 @@ t_process	*init_process(t_process *process_ptr)
 	return process_ptr;
 }
 
-void put_smaller_half_to_b(t_node *list_a, t_node *list_b)
+int larger_half_first_to_second(t_node *list_from, t_node *list_to)
 {
 	int *array_a;
     int len;
 	int median;
-	t_node *ptr;
 	int i;
 
-	array_a = convert_to_array(list_a, list_b);
-    len = len_list(list_a);
+	array_a = convert_to_array(list_from, list_to);
+    len = len_list(list_from);
 	sort_num_array(array_a, len);
 	median = calculate_median(array_a, len);
 
-	ptr = list_a->next;
 	i = 0;
 	while (i < len)
 	{
-		ptr = ptr->next;
-		if (ptr->prev->key > median)
-			rotate(list_a);
+		if (list_from->next->key <= median)
+			rotate(list_from);
 		else
-			push(list_a, list_b);
+			push(list_from, list_to);
 		i++;
 	}
     free(array_a);
     array_a = NULL;
+	return len / 2;
+}
+
+int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+{
+	int *array_a;
+    int len;
+	int median;
+	int i;
+
+	array_a = convert_to_array(list_from, list_to);
+    len = len_list(list_from);
+	sort_num_array(array_a, len);
+	median = calculate_median(array_a, len);
+
+	i = 0;
+	while (i < len)
+	{
+		if (list_from->next->key > median)
+			rotate(list_from);
+		else
+			push(list_from, list_to);
+		i++;
+	}
+    free(array_a);
+    array_a = NULL;
+	return len / 2;
+}
+
+
+void		some_head_to_head(t_node *list_from, t_node *list_to, int len)
+{
+	int cnt;
+
+	cnt = 0;
+	while (cnt < len)
+	{
+		push(list_from, list_to);
+		cnt++;
+	}
+}
+
+void    quick_sort(t_node *list_a, t_node *list_b)
+{
+	int len;
+	int cnt;
+
+	len = len_list(list_b);
+	if (len <= 3)
+	{
+		rule_sort(list_a, list_b);
+		some_head_to_tail(list_b, list_a, len);
+		return ;
+	}
+	cnt = larger_half_first_to_second(list_b, list_a);
+	quick_sort(list_a, list_b);
+	some_head_to_head(list_a, list_b, cnt);
+	quick_sort(list_a, list_b);
+
+	return ;
 }
 
 int main()
 {	
-	t_node *stack_a;
-	t_node *stack_b;
+	t_node *list_a;
+	t_node *list_b;
 	t_node *tmp_ptr;
 	int i;
 	
-	stack_a = init_node(stack_a);
-	stack_b = init_node(stack_b);
+	list_a = init_node(list_a);
+	list_b = init_node(list_b);
 	
-    set_node_last(1, stack_a);
-    set_node_last(2, stack_a);
-    set_node_last(3, stack_a);
-    set_node_last(4, stack_a);
-    set_node_last(5, stack_a);
-    set_node_last(6, stack_a);
-    set_node_last(7, stack_a);
-    set_node_last(8, stack_a);
+    set_node_last(3, list_a);
+    set_node_last(14, list_a);
+    set_node_last(2, list_a);
+    set_node_last(13, list_a);
+    set_node_last(1, list_a);
+    set_node_last(8, list_a);
+    set_node_last(9, list_a);
+    set_node_last(6, list_a);
+    set_node_last(7, list_a);
+    set_node_last(11, list_a);
+    set_node_last(5, list_a);
+    set_node_last(7, list_a);
+    set_node_last(12, list_a);
+    set_node_last(10, list_a);
+    set_node_last(4, list_a);
 
-	tmp_ptr = stack_a->next;
-	while (tmp_ptr != stack_a)
+	tmp_ptr = list_a->next;
+	while (tmp_ptr != list_a)
 	{
 		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
 	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
-	put_smaller_half_to_b(stack_a, stack_b);
-
-	tmp_ptr = stack_a->next;
-	while (tmp_ptr != stack_a)
+	tmp_ptr = list_b->next;
+	while (tmp_ptr != list_b)
 	{
 		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
 	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
-	tmp_ptr = stack_b->next;
-	while (tmp_ptr != stack_b)
+	smaller_half_first_to_second(list_a, list_b);
+	quick_sort(list_a, list_b);
+	larger_half_first_to_second(list_a, list_b);
+	quick_sort(list_a, list_b);
+
+	tmp_ptr = list_a->next;
+	while (tmp_ptr != list_a)
 	{
 		printf("key: %d\n", tmp_ptr->key);
 		tmp_ptr = tmp_ptr->next;
 	}
 	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
+	tmp_ptr = list_b->next;
+	while (tmp_ptr != list_b)
+	{
+		printf("key: %d\n", tmp_ptr->key);
+		tmp_ptr = tmp_ptr->next;
+	}
+	printf("\n--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 	system("leaks a.out");
 
 	return 0;

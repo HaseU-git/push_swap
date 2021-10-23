@@ -301,7 +301,6 @@ void put_smaller_half_to_b(t_node *stack_a_nil, t_node *stack_b_nil)
     }
 }
 
-
 int main()
 {
 	t_node *stack_a;

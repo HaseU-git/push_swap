@@ -57,10 +57,12 @@ int	ft_atoi(const char *str);
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 
 // rule_sort.c
-void	some_head_b_to_tail_a(t_node *list_a, t_node *list_b, int num);
+void	some_head_to_tail(t_node *list_a, t_node *list_b, int num);
 void	swap_and_rotate(t_node *dummy);
 void	rotate_and_swap(t_node *dummy);
 void	rule_sort_three(t_node *list_a, t_node *list_b);
+void	rule_sort_two(t_node *list_a, t_node *list_b);
+void	rule_sort(t_node *list_a, t_node *list_b);
 
 // list_operate.c
 void	swap(t_node *dummy);
@@ -73,3 +75,6 @@ t_node	*pop_first(t_node *dummy);
 t_node	*pop_last(t_node *dummy);
 void	add_node_first(t_node *dummy, t_node *node);
 void	add_node_last(t_node *dummy, t_node *node);
+
+// quick_sort.c
+int len_list(t_node *dummy);

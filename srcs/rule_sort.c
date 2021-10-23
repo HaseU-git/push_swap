@@ -1,14 +1,14 @@
 #include "push_swap.h"
 
-void	some_head_b_to_tail_a(t_node *list_a, t_node *list_b, int num)
+void	some_head_to_tail(t_node *list_from, t_node *list_to, int num)
 {
 	int cnt;
 
 	cnt = 0;
 	while (cnt < num)
 	{
-		push(list_b, list_a);
-		rotate(list_a);
+		push(list_from, list_to);
+		rotate(list_to);
 		cnt++;
 	}
 }
@@ -45,5 +45,21 @@ void	rule_sort_three(t_node *list_a, t_node *list_b)
 		rotate(list_b);
 	else if (first > second && second > third && first > third)
 		rotate_and_swap(list_b);
-	some_head_b_to_tail_a(list_a, list_b, 3);
+}
+
+void	rule_sort_two (t_node *list_a, t_node *list_b)
+{
+	if (list_b->next->key > list_b->next->next->key)
+		rotate(list_b);
+}
+
+void	rule_sort(t_node *list_a, t_node *list_b)
+{
+	int len_list_b;
+
+	len_list_b = len_list(list_b);
+	if (len_list_b == 2)
+		rule_sort_two(list_a, list_b);
+	else if (len_list_b == 3)
+		rule_sort_three(list_a, list_b);
 }
