@@ -21,13 +21,15 @@ int main(int argc, char *argv[])
     list_b = init_node(list_b);
 
     arg_to_list(list_a, list_b, argc, argv);
-    arg_to_list(list_b, list_a, argc, argv);
     
     show_list(list_a);
     printf("%s", "---------\n");
     show_list(list_b);
 
-    rule_sort_three(list_a, list_b);
+	smaller_half_first_to_second(list_a, list_b);
+	quick_sort(list_a, list_b);
+	larger_half_first_to_second(list_a, list_b);
+	quick_sort(list_a, list_b);
 
     printf("%s", "---=====--\n");
     show_list(list_a);

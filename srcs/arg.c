@@ -9,9 +9,11 @@ int	is_num(char *str)
     i = 0;
     if (str[i] == '-')
         i++;
+    else if (str[i] == '0' && str[i + 1] == '\n')
+        return (is_num_flag);
     while (str[i] != '\0')
     {
-        if (!('0' <= str[i] && str[i] <= '9'))
+        if (!('1' <= str[i] && str[i] <= '9'))
         {
             is_num_flag = 0;
             break ;
@@ -69,6 +71,28 @@ int	ft_atoi(const char *str)
 	return (sign * ret);
 }
 
+int is_dupulicated(t_node *list_a)
+{
+    t_node *fixed_node;
+    t_node *variable_node;
+    int is_dup_flag;
+
+    fixed_node = list_a->next;
+    is_dup_flag = 0;
+    while (fixed_node != list_a)
+    {
+        variable_node = fixed_node->next; 
+        while (variable_node != list_a)
+        {
+            if (fixed_node->key == variable_node->key)
+                is_dup_flag = 1;
+            variable_node = variable_node->next;
+        }
+        fixed_node = fixed_node->next;
+    }
+    return (is_dup_flag);
+}
+
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
     int i;
@@ -80,12 +104,17 @@ void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
         new_node = set_node_last(ft_atoi(argv[i]), list_a);
         if (new_node == NULL)
         {
-            free_all_nodes(list_a);
-            free_all_nodes(list_b);
-            // エラーメッセージ出力
-            write(1, "Error\n", 6); //7であってる？  
-            // exit();
+            free_two_lists(list_a, list_b);
+            write(1, "Error\n", 6);
+            exit(1);
         }
         i++;
+    }
+
+    if (is_dupulicated(list_a))
+    {
+        free_two_lists(list_a, list_b);
+        write(1, "Error\n", 6);
+        exit(1);
     }
 }

@@ -1,18 +1,5 @@
 #include "push_swap.h"
 
-void	some_head_to_tail(t_node *list_from, t_node *list_to, int num)
-{
-	int cnt;
-
-	cnt = 0;
-	while (cnt < num)
-	{
-		push(list_from, list_to);
-		rotate(list_to);
-		cnt++;
-	}
-}
-
 void	swap_and_rotate(t_node *dummy)
 {
 	swap(dummy);
