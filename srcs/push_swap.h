@@ -1,5 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef PUSH_SWAP
+
+# define PUSH_SWAP
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -34,4 +38,9 @@ enum   e_operation
     RRA,
     RRB,
     RRR
-}
+};
+
+t_node	*init_node(t_node *dummy);
+t_node	*set_node_last(int key, t_node *dummy);
+
+#endif

@@ -7,7 +7,7 @@ t_node	*init_node(t_node *dummy)
 		return NULL;
 	dummy->next = dummy;
 	dummy->prev = dummy;
-	return (dummy)
+	return (dummy);
 }
 
 t_node	*set_node_first(int key, t_node *dummy)
@@ -35,7 +35,7 @@ void	delete_node(t_node **t, t_node *dummy)
 	(*t) = NULL;
 }
 
-t_node	*set_node_first(int key, t_node *dummy)
+t_node	*set_node_last(int key, t_node *dummy)
 {
 	t_node		*x;
 	t_node		*last;
