@@ -69,7 +69,7 @@ int	ft_atoi(const char *str)
 	return (sign * ret);
 }
 
-void arg_to_list(t_node *dummy, int argc, char *argv[])
+void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
     int i;
     t_node *new_node;
@@ -78,8 +78,13 @@ void arg_to_list(t_node *dummy, int argc, char *argv[])
     while (i < argc)
     {
         new_node = set_node_last(ft_atoi(argv[i]), dummy);
-        // if (new_node == NULL)
-            //全てフリーする
+        if (new_node == NULL)
+        {
+            free_all_nodes(list_a);
+            free_all_nodes(list_b);
+            // エラーメッセージ出力
+            exit();
+        }
         i++;
     }
 }
@@ -88,8 +93,6 @@ int main(int argc, char *argv[])
 {
     t_node *list_a;
     t_node *list_b;
-
-    int test = arg_check(argc, argv);
 
     list_a = init_node(list_a);
     list_b = init_node(list_b);

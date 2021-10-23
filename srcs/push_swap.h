@@ -43,4 +43,7 @@ enum   e_operation
 t_node	*init_node(t_node *dummy);
 t_node	*set_node_last(int key, t_node *dummy);
 
+void    free_all_nodes(t_node *dummy);
+void    free_two_lists(t_node *list_a, t_node *list_b);
+
 #endif
