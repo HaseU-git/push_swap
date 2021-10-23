@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	swap(t_node *dummy)
+void	swap(t_node *dummy, char a_or_b)
 {
 	t_node *first;
 	t_node *second;
@@ -11,12 +11,12 @@ void	swap(t_node *dummy)
 	add_node_first(dummy, second);
 }
 
-void	rotate(t_node *dummy)
+void	rotate(t_node *dummy, char a_or_b)
 {
 	add_node_last(dummy, pop_first(dummy));
 }
 
-void	reverse_rotate(t_node *dummy)
+void	reverse_rotate(t_node *dummy, char a_or_b)
 {
 	add_node_first(dummy, pop_last(dummy));
 }

@@ -18,9 +18,9 @@ int larger_half_first_to_second(t_node *list_from, t_node *list_to)
 	while (i < len)
 	{
 		if (list_from->next->key <= median)
-			rotate(list_from);
+			rotate(list_from, a_or_b);
 		else
-			push(list_from, list_to);
+			push(list_from, list_to, a_or_b);
 		i++;
 	}
     free(array_a);

@@ -13,20 +13,7 @@ typedef struct s_node
 	struct s_node *next;
 } t_node;
 
-typedef struct s_num_array
-{
-	int *elements;
-	int len;
-} t_num_array;
-
-typedef struct s_process
-{
-	enum e_operation *operation;
-	struct s_process *prev;
-	struct s_process *next;
-} t_process;
-
-enum   e_operation 
+typedef enum   e_operation 
 {
     SA,
     SB,
@@ -39,7 +26,15 @@ enum   e_operation
     RRA,
     RRB,
     RRR
-};
+} t_operation;
+
+
+typedef struct s_process
+{
+	t_operation operation;
+	struct s_process *prev;
+	struct s_process *next;
+} t_process;
 
 
 
