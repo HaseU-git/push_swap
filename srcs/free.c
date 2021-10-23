@@ -13,7 +13,7 @@ void    free_all_nodes(t_node *dummy)
         ptr = ptr->next;
     }
     free(ptr);
-    ptr = NULL
+    ptr = NULL;
     return ;
 }
 
