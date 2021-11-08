@@ -31,6 +31,7 @@ int larger_half_first_to_second(t_node *list_from, t_node *list_to)
 int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
 {
 	int *array_a;
+	// 本当はarraybのはず
     int len;
 	int median;
 	int i;

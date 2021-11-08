@@ -20,6 +20,9 @@ int main(int argc, char *argv[])
     list_a = init_node(list_a);
     list_b = init_node(list_b);
 
+    // list_aとlistbのNULLチェックでどちらかがNULLだったらfreeして終了  
+    // または、list_aとlist_bを同時にinitする方法も考えられる  
+
     arg_to_list(list_a, list_b, argc, argv);
     
     show_list(list_a);
