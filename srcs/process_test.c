@@ -29,9 +29,8 @@ void put_error(t_prs *process)
 {
     free(process);
     write(1, "Error\n", 6);
-    exit(1);
+    exit(0);
 }
-
 
 t_prs *init_process()
 {
@@ -47,7 +46,6 @@ t_prs *init_process()
 
 	return process;
 }
-
 
 void update_process(t_ope operation, t_prs *process)
 {
@@ -89,6 +87,11 @@ int main()
     t_prs *process;
 
     process = init_process();
+    update_process(PA, process);
+    update_process(PA, process);
+    update_process(PA, process);
+    update_process(PA, process);
+    update_process(PA, process);
     update_process(PA, process);
     show_list(process);
 }
