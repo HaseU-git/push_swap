@@ -1,19 +1,19 @@
 #include "push_swap.h"
 
-
 // テストしてない
 void    free_all_nodes(t_node *dummy)
 {
-    t_node *ptr;
+    t_node    *ptr;
+    t_node    *tmp;
 
     ptr = dummy->next;
     while (ptr != dummy)
     {
+        tmp = ptr->next;
         free(ptr);
-        ptr = ptr->next;
+        ptr = tmp;
     }
     free(ptr);
-    ptr = NULL;
     return ;
 }
 

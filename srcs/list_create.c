@@ -1,13 +1,28 @@
 #include "push_swap.h"
 
-t_node	*init_node(t_node *dummy)
+t_node	*init_node()
 {
+	t_node *dummy;
+
 	dummy = (t_node *)malloc(sizeof(t_node));
 	if (!dummy)
 		return NULL;
 	dummy->next = dummy;
 	dummy->prev = dummy;
 	return (dummy);
+}
+
+void	check_nodes(t_node *a_dummy, t_node *b_dummy)
+{
+	if (a_dummy == NULL && b_dummy != NULL)
+		free_all_nodes(b_dummy);
+	else if (b_dummy == NULL && b_dummy != NULL)
+		free_all_nodes(a_dummy);
+	if (a_dummy == NULL || b_dummy == NULL)
+	{
+		write(1, "Error\n", 6);
+		exit(0);
+	}
 }
 
 t_node	*set_node_first(int key, t_node *dummy)
