@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <limits.h>
-#include <stdio.h>
 
 int count_digit(int num)
 {
@@ -140,54 +138,28 @@ int is_dupulicated(t_node *list_a)
 	return (is_dup_flag);
 }
 
-// void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
-// {
-//     int i;
-//     t_node *new_node;
-
-//     i = 1;
-//     while (i < argc)
-//     {
-//         new_node = set_node_last(str_to_num(argv[i]), list_a);
-//         if (new_node == NULL)
-//         {
-//             free_two_lists(list_a, list_b);
-//             write(1, "Error\n", 6);
-//             exit(1);
-//         }
-//         i++;
-//     }
-
-//     if (is_dupulicated(list_a))
-//     {
-//         free_two_lists(list_a, list_b);
-//         write(1, "Error\n", 6);
-//         exit(1);
-//     }
-// }
-
-#include "push_swap.h"
-
-void show_list(t_node *dummy)
+void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
-	t_node *ptr;
-	ptr = dummy->next;
+    int i;
+    t_node *new_node;
 
-	while (ptr != dummy)
-	{
-		printf("%d\n", ptr->key);
-		ptr = ptr->next;
-	}
-}
+    i = 1;
+    while (i < argc)
+    {
+        new_node = set_node_last((int)str_to_num(argv[i]), list_a);
+        if (new_node == NULL)
+        {
+            free_two_lists(list_a, list_b);
+            write(1, "Error\n", 6);
+            exit(1);
+        }
+        i++;
+    }
 
-int main(int argc, char *argv[])
-{
-	t_node *list_a;
-	t_node *list_b;
-
-	//     list_a = init_node(list_a);
-	//     list_b = init_node(list_b);
-
-	printf("%d\n", arg_check(argc, argv));
-	return (1);
+    if (is_dupulicated(list_a))
+    {
+        free_two_lists(list_a, list_b);
+        write(1, "Error\n", 6);
+        exit(1);
+    }
 }
