@@ -13,7 +13,7 @@ typedef struct s_node
 	struct s_node *next;
 } t_node;
 
-typedef enum   e_operation 
+typedef enum   e_ope 
 {
     SA,
     SB,
@@ -26,16 +26,15 @@ typedef enum   e_operation
     RRA,
     RRB,
     RRR
-} t_operation;
+} t_ope;
 
 
-typedef struct s_process
+typedef struct s_prs
 {
-	t_operation operation;
-	struct s_process *prev;
-	struct s_process *next;
-} t_process;
-
+	t_ope operation;
+	struct s_prs *prev;
+	struct s_prs *next;
+} t_prs;
 
 
 // arg.c
@@ -50,6 +49,7 @@ void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 
 // free.c
 void    free_all_nodes(t_node *dummy);
+void    free_all_process(t_prs *dummy);
 void    free_two_lists(t_node *list_a, t_node *list_b);
 
 // list_create.c
