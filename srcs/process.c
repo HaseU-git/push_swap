@@ -23,7 +23,7 @@ t_prs *init_process(t_node *list_a, t_node *list_b)
 	return process;
 }
 
-void update_process(t_ope operation, t_prs *process, t_node *list_a, t_node *list_b)
+void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation)
 {
    	t_prs		*new;
 	t_prs		*last;
