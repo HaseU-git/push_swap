@@ -12,6 +12,26 @@ void show_list(t_node *dummy)
     }
 }
 
+void list_null_check(t_node *list_a, t_node *list_b)
+{
+    free_two_lists(list_a, list_b);
+    write(1, "Error\n", 6);
+    system("leaks a.out");
+    exit(1);
+    if (list_a == NULL || list_b == NULL)
+    {
+        if (list_a == NULL && list_b != NULL)
+            free_all_nodes(list_b);
+        else if (list_a != NULL && list_b == NULL)
+            free_all_nodes(list_a);
+        if (list_a == NULL && list_b != NULL)
+        free_two_lists(list_a, list_b);
+        write(1, "Error\n", 6);
+        system("leaks a.out");
+        exit(1);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     t_node *list_a;
@@ -26,6 +46,8 @@ int main(int argc, char *argv[])
 
 
     show_list(list_a);
+    
+    list_null_check(list_a, list_b);
 
 
     // list_aとlistbのNULLチェックでどちらかがNULLだったらfreeして終了  
