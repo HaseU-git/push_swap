@@ -17,14 +17,16 @@ int main(int argc, char *argv[])
     t_node *list_a;
     t_node *list_b;
 
-	if (arg_check(argc, argv) == 1)
-	{
-		write(1, "Error\n", 6);
-        exit(1);
-	}
+	arg_check(argc, argv);
 
     list_a = init_node(list_a);
     list_b = init_node(list_b);
+
+    arg_to_list(list_a, list_b, argc, argv);
+
+
+    show_list(list_a);
+
 
     // list_aとlistbのNULLチェックでどちらかがNULLだったらfreeして終了  
     // または、list_aとlist_bを同時にinitする方法も考えられる  

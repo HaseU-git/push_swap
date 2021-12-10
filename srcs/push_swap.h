@@ -44,7 +44,7 @@ int len_str(char *str);
 long long str_to_num(char *str);
 int is_int(char *str);
 int	is_num(char *str);
-int arg_check(int argc, char *argv[]);
+void arg_check(int argc, char *argv[]);
 int is_dupulicated(t_node *list_a);
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 

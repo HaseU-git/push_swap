@@ -94,7 +94,7 @@ int	is_num(char *str)
 	return (is_num_flag);
 }
 
-int arg_check(int argc, char *argv[])
+void arg_check(int argc, char *argv[])
 {
 	int is_error_flag;
 	int i;
@@ -103,16 +103,17 @@ int arg_check(int argc, char *argv[])
 	is_error_flag = 0;
 	if (argc == 1)
 		is_error_flag = 1;
-	while (i < argc)
+	while (i < argc && is_error_flag != 1)
 	{
 		if (is_num(argv[i]) == 0 || is_int(argv[i]) == 0)
-		{
 			is_error_flag = 1;
-			break ;
-		}
 		i++;
 	}
-	return is_error_flag;
+	if (is_error_flag == 1)
+	{
+		write(1, "Error\n", 6);
+        exit(1);
+	}	
 }
 
 
