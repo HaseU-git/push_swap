@@ -98,4 +98,10 @@ void	rule_sort_three(t_node *list_a, t_node *list_b);
 void	rule_sort_two (t_node *list_a, t_node *list_b);
 void	rule_sort(t_node *list_a, t_node *list_b);
 
+// process.c
+void put_error();
+t_prs *init_process(t_node *list_a, t_node *list_b);
+void update_process(t_ope operation, t_prs *process, t_node *list_a, t_node *list_b);
+void show_list(t_prs *dummy);
+
 #endif
