@@ -46,15 +46,3 @@ void update_process(t_ope operation, t_prs *process, t_node *list_a, t_node *lis
 	last->next = new;
 	new->prev = last;
 }
-
-void show_list(t_prs *dummy)
-{
-    t_prs *ptr;
-    ptr = dummy->next;
-
-    while (ptr != dummy)
-    {
-        printf("%d\n", ptr->operation);
-        ptr = ptr->next;
-    }
-}
