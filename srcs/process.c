@@ -1,48 +1,60 @@
 
 #include "push_swap.h"
 
-t_process	*init_process(/*t_node *list_a, t_node *list_b, */t_process *process_ptr)
+void put_error()
 {
-	process_ptr = (t_process *)malloc(sizeof(t_process));
-	if (!process_ptr)
-    {
-        // free_two_lists(list_a, list_b);
-        // wirte(1, "Error\n", 6);
-		exit(1);
-    }
-	process_ptr->next = process_ptr;
-	process_ptr->prev = process_ptr;
-
-	return process_ptr;
+    write(1, "Error\n", 6);
+    exit(0);
 }
 
-t_process	*set_process_last(t_operation operation, t_process *dummy)
+t_prs *init_process(t_node *list_a, t_node *list_b)
 {
-	t_process		*x;
-	t_process		*last;
+    t_prs *process;
 
-	x = (t_process *)malloc(sizeof(t_process));
-	if (!x)
-		return (NULL);
-	last = dummy;
-	while (last->next != dummy)
+    process = (t_prs *)malloc(sizeof(t_prs));
+    if (process == NULL)
+    {
+        free_two_lists(list_a, list_b);
+        put_error();
+    }
+    process->next = process;
+	process->prev = process;
+
+	return process;
+}
+
+void update_process(t_ope operation, t_prs *process, t_node *list_a, t_node *list_b)
+{
+   	t_prs		*new;
+	t_prs		*last;
+
+	new = (t_prs *)malloc(sizeof(t_prs));
+	if (new == NULL)
+    {
+        free_all_process(process);
+        free_two_lists(list_a, list_b);
+        put_error();
+    }
+	last = process;
+	while (last->next != process)
 	{
 		last = last->next;
 	}
-	x->operation = operation;
-	x->next = last->next;
-	last->next->prev = x;
-	last->next = x;
-	x->prev = last;
-	return (x);
+	new->operation = operation;
+	new->next = last->next;
+	last->next->prev = new;
+	last->next = new;
+	new->prev = last;
 }
 
-int main()
+void show_list(t_prs *dummy)
 {
-    t_process *test; 
-    test = init_process(test);
+    t_prs *ptr;
+    ptr = dummy->next;
 
-    set_process_last(SB, test);
-    set_process_last(SA, test);
-    printf("%d\n", test->next->next->operation);
+    while (ptr != dummy)
+    {
+        printf("%d\n", ptr->operation);
+        ptr = ptr->next;
+    }
 }
