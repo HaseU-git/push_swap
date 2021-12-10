@@ -101,6 +101,16 @@ void	rule_sort(t_node *list_a, t_node *list_b);
 // process.c
 void put_error();
 t_prs *init_process(t_node *list_a, t_node *list_b);
-void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation)
+void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation);
+
+// list_operate_new.c
+void	swap_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	swap_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	reverse_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	push_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	push_b(t_node *list_a, t_node *list_b, t_prs *process);
 
 #endif
