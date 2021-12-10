@@ -28,18 +28,43 @@ int larger_half_first_to_second(t_node *list_from, t_node *list_to)
 	return len / 2;
 }
 
-int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+int smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	int *array_a;
-	// 本当はarraybのはず
+	int *num_array;
     int len;
 	int median;
 	int i;
 
-	array_a = convert_to_array(list_from, list_to);
+	num_array = convert_to_array(list_a, list_b);
+    len = len_list(list_a);
+	sort_num_array(num_array, len);
+	median = calculate_median(num_array, len);
+    free(num_array);
+
+	i = 0;
+	while (i < len)
+	{
+		if (list_a->next->key > median)
+			rotate_a(list_a, list_b, process);
+		else
+			push_b(list_a, list_b, process);
+		i++;
+	}
+	return len / 2;
+}
+
+int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+{
+	int *num_array;
+    int len;
+	int median;
+	int i;
+
+	num_array = convert_to_array(list_from, list_to);
     len = len_list(list_from);
-	sort_num_array(array_a, len);
-	median = calculate_median(array_a, len);
+	sort_num_array(num_array, len);
+	median = calculate_median(num_array, len);
+    free(num_array);
 
 	i = 0;
 	while (i < len)
@@ -50,8 +75,33 @@ int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
 			push(list_from, list_to);
 		i++;
 	}
-    free(array_a);
-    array_a = NULL;
+	return len / 2;
+}
+
+
+int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+{
+	int *num_array;
+	// 本当はarraybのはず
+    int len;
+	int median;
+	int i;
+
+	num_array = convert_to_array(list_from, list_to);
+    len = len_list(list_from);
+	sort_num_array(num_array, len);
+	median = calculate_median(num_array, len);
+    free(num_array);
+
+	i = 0;
+	while (i < len)
+	{
+		if (list_from->next->key > median)
+			rotate(list_from);
+		else
+			push(list_from, list_to);
+		i++;
+	}
 	return len / 2;
 }
 

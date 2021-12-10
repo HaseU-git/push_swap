@@ -10,10 +10,11 @@ int *convert_to_array(t_node *dummy, t_node *another_dummy)
 
 	len = len_list(dummy);
 	array = (int *)malloc(sizeof(int) * len);
-	if (!array)
+	if (array == NULL)
     {
         free_two_lists(dummy, another_dummy);
-        // exit();
+        write(1, "Error\n", 6);
+        exit(1);
     }
 
 	ptr = dummy->next;

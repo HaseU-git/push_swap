@@ -87,6 +87,7 @@ int calculate_median(int *array, int len);
 // quick_sort.c
 int larger_half_first_to_second(t_node *list_from, t_node *list_to);
 int smaller_half_first_to_second(t_node *list_from, t_node *list_to);
+int smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process);
 void		some_head_to_head(t_node *list_from, t_node *list_to, int len);
 void	some_head_to_tail(t_node *list_from, t_node *list_to, int num);
 void    quick_sort(t_node *list_a, t_node *list_b);

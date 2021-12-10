@@ -14,28 +14,25 @@ void show_list(t_node *dummy)
 
 void list_null_check(t_node *list_a, t_node *list_b)
 {
-    free_two_lists(list_a, list_b);
-    write(1, "Error\n", 6);
-    system("leaks a.out");
-    exit(1);
     if (list_a == NULL || list_b == NULL)
     {
         if (list_a == NULL && list_b != NULL)
             free_all_nodes(list_b);
         else if (list_a != NULL && list_b == NULL)
             free_all_nodes(list_a);
-        if (list_a == NULL && list_b != NULL)
-        free_two_lists(list_a, list_b);
+        else if (list_a == NULL && list_b == NULL)
+            free_two_lists(list_a, list_b);
         write(1, "Error\n", 6);
-        system("leaks a.out");
         exit(1);
     }
+    return ;
 }
 
 int main(int argc, char *argv[])
 {
     t_node *list_a;
     t_node *list_b;
+    t_prs *process;
 
 	arg_check(argc, argv);
 
@@ -44,23 +41,12 @@ int main(int argc, char *argv[])
 
     arg_to_list(list_a, list_b, argc, argv);
 
-
     show_list(list_a);
     
     list_null_check(list_a, list_b);
 
-
-    // list_aとlistbのNULLチェックでどちらかがNULLだったらfreeして終了  
-    // または、list_aとlist_bを同時にinitする方法も考えられる  
-
-
-    // arg_to_list(list_a, list_b, argc, argv);
-    
-    // show_list(list_a);
-    // printf("%s", "---------\n");
-    // show_list(list_b);
-
-	// smaller_half_first_to_second(list_a, list_b);
+    process = init_process(list_a, list_b);
+	smaller_half_a_to_b(list_a, list_b, process);
 	// quick_sort(list_a, list_b);
 	// larger_half_first_to_second(list_a, list_b);
 	// quick_sort(list_a, list_b);
