@@ -1,45 +1,23 @@
+#include "push_swap.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
-typedef enum   e_ope 
+void put_error()
 {
-    SA,
-    SB,
-    SS,
-    PA,
-    PB,
-    RA,
-    RB,
-    RR,
-    RRA,
-    RRB,
-    RRR
-} t_ope;
-
-
-typedef struct s_prs
-{
-	t_ope operation;
-	struct s_prs *prev;
-	struct s_prs *next;
-} t_prs;
-
-void put_error(t_prs *process)
-{
-    free(process);
     write(1, "Error\n", 6);
     exit(0);
 }
 
-t_prs *init_process()
+t_prs *init_process(t_node *list_a, t_node *list_b)
 {
     t_prs *process;
 
     process = (t_prs *)malloc(sizeof(t_prs));
     if (process == NULL)
     {
-        return NULL;
+        free_two_lists(list_a, list_b);
+        put_error();
     }
     process->next = process;
 	process->prev = process;
@@ -47,15 +25,17 @@ t_prs *init_process()
 	return process;
 }
 
-void update_process(t_ope operation, t_prs *process)
+void update_process(t_ope operation, t_prs *process, t_node *list_a, t_node *list_b)
 {
    	t_prs		*new;
 	t_prs		*last;
 
 	new = (t_prs *)malloc(sizeof(t_prs));
-	if (!new)
+	if (new == NULL)
     {
-       put_error(process);
+        free_all_process(process);
+        free_two_lists(list_a, list_b);
+        put_error();
     }
 	last = process;
 	while (last->next != process)
@@ -85,13 +65,17 @@ void show_list(t_prs *dummy)
 int main()
 {
     t_prs *process;
+    t_node *list_a;
+    t_node *list_b;
 
-    process = init_process();
-    update_process(PA, process);
-    update_process(PA, process);
-    update_process(PA, process);
-    update_process(PA, process);
-    update_process(PA, process);
-    update_process(PA, process);
+    list_a = init_node(list_a);
+    list_b = init_node(list_b);
+
+    process = init_process(list_a, list_b);
+    update_process(PA, process, list_a, list_b);
+    update_process(PA, process, list_a, list_b);
+    update_process(PA, process, list_a, list_b);
+    update_process(PA, process, list_a, list_b);
+    update_process(PA, process, list_a, list_b);
     show_list(process);
 }
