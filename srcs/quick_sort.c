@@ -2,36 +2,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int larger_half_first_to_second(t_node *list_from, t_node *list_to)
-{
-	int *array_a;
-    int len;
-	int median;
-	int i;
-
-	array_a = convert_to_array(list_from, list_to);
-    len = len_list(list_from);
-	sort_num_array(array_a, len);
-	median = calculate_median(array_a, len);
-
-	i = 0;
-	while (i < len)
-	{
-		if (list_from->next->key <= median)
-			rotate(list_from, a_or_b);
-		else
-			push(list_from, list_to, a_or_b);
-		i++;
-	}
-    free(array_a);
-    array_a = NULL;
-	return len / 2;
-}
+// int larger_half_first_to_second(t_node *list_from, t_node *list_to)
+// {
+// 	int *array_a;
+//     int len;
+// 	int median;
+// 	int i;
+// 
+// 	array_a = convert_to_array(list_from, list_to);
+//     len = len_list(list_from);
+// 	sort_num_array(array_a, len);
+// 	median = calculate_median(array_a, len);
+// 
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		if (list_from->next->key <= median)
+// 			rotate(list_from, a_or_b);
+// 		else
+// 			push(list_from, list_to, a_or_b);
+// 		i++;
+// 	}
+//     free(array_a);
+//     array_a = NULL;
+// 	return len / 2;
+// }
 
 int smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	int *num_array;
-    int len;
+	int len;
 	int median;
 	int i;
 
@@ -53,57 +53,57 @@ int smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 	return len / 2;
 }
 
-int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
-{
-	int *num_array;
-    int len;
-	int median;
-	int i;
+// int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+// {
+// 	int *num_array;
+//     int len;
+// 	int median;
+// 	int i;
+// 
+// 	num_array = convert_to_array(list_from, list_to);
+//     len = len_list(list_from);
+// 	sort_num_array(num_array, len);
+// 	median = calculate_median(num_array, len);
+//     free(num_array);
+// 
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		if (list_from->next->key > median)
+// 			rotate(list_from);
+// 		else
+// 			push(list_from, list_to);
+// 		i++;
+// 	}
+// 	return len / 2;
+// }
 
-	num_array = convert_to_array(list_from, list_to);
-    len = len_list(list_from);
-	sort_num_array(num_array, len);
-	median = calculate_median(num_array, len);
-    free(num_array);
 
-	i = 0;
-	while (i < len)
-	{
-		if (list_from->next->key > median)
-			rotate(list_from);
-		else
-			push(list_from, list_to);
-		i++;
-	}
-	return len / 2;
-}
-
-
-int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
-{
-	int *num_array;
-	// 本当はarraybのはず
-    int len;
-	int median;
-	int i;
-
-	num_array = convert_to_array(list_from, list_to);
-    len = len_list(list_from);
-	sort_num_array(num_array, len);
-	median = calculate_median(num_array, len);
-    free(num_array);
-
-	i = 0;
-	while (i < len)
-	{
-		if (list_from->next->key > median)
-			rotate(list_from);
-		else
-			push(list_from, list_to);
-		i++;
-	}
-	return len / 2;
-}
+// int smaller_half_first_to_second(t_node *list_from, t_node *list_to)
+// {
+// 	int *num_array;
+// 	// 本当はarraybのはず
+//     int len;
+// 	int median;
+// 	int i;
+// 
+// 	num_array = convert_to_array(list_from, list_to);
+//     len = len_list(list_from);
+// 	sort_num_array(num_array, len);
+// 	median = calculate_median(num_array, len);
+//     free(num_array);
+// 
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		if (list_from->next->key > median)
+// 			rotate(list_from);
+// 		else
+// 			push(list_from, list_to);
+// 		i++;
+// 	}
+// 	return len / 2;
+// }
 
 void		some_head_to_head(t_node *list_from, t_node *list_to, int len)
 {

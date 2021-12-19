@@ -59,15 +59,3 @@ void	push_b(t_node *list_a, t_node *list_b, t_prs *process)
 	add_node_first(list_b, pop_first(list_a));
 	update_process(list_a, list_b, process, PB);
 }
-
-void show_list(t_node *dummy)
-{
-    t_node *ptr;
-    ptr = dummy->next;
-
-    while (ptr != dummy)
-    {
-        printf("%d\n", ptr->key);
-        ptr = ptr->next;
-    }
-}
