@@ -46,15 +46,15 @@ int main(int argc, char *argv[])
 
 	process = init_process(list_a, list_b);
 	smaller_half_a_to_b(list_a, list_b, process);
-
 	quick_sort(list_a, list_b, process);
+	larger_half_a_to_b(list_a, list_b, process);
+	quick_sort(list_a, list_b, process);
+
 	printf("%s", "---=====--\n");
 	show_list(list_a);
 	printf("%s", "---------\n");
 	show_list(list_b);
 
-	// larger_half_first_to_second(list_a, list_b);
-	// quick_sort(list_a, list_b, process);
 
 	// printf("%s", "---=====--\n");
 	// show_list(list_a);
