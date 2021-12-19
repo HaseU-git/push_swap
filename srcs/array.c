@@ -49,31 +49,6 @@ t_num_array	*list_to_array(t_node *dummy)
 	return (set_num_array(len, array));
 }
 
-t_num_array	*sort_num_array(t_num_array *array)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	while (i < array->len)
-	{
-		j = i + 1;
-		while (j < array->len)
-		{
-			if (array->elements[i] > array->elements[j])
-			{
-				tmp = array->elements[i];
-				array->elements[i] = array->elements[j];
-				array->elements[j] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (array);
-}
-
 int	calculate_median(t_num_array *array)
 {
 	int	median;

@@ -1,18 +1,18 @@
 #include "push_swap.h"
 
-void	swap_and_rotate(t_node *dummy, char a_or_b)
+void	swap_b_and_rotate_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	swap(dummy, a_or_b);
-	rotate(dummy, a_or_b);
+	swap_b(list_a, list_b, process);
+	rotate_b(list_a, list_b, process);
 }
 
-void	rotate_and_swap(t_node *dummy, char a_or_b)
+void	rotate_b_and_swap_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	rotate(dummy, a_or_b);
-	swap(dummy, a_or_b);
+	rotate_b(list_a, list_b, process);
+	swap_b(list_a, list_b, process);
 }
 
-void	rule_sort_three(t_node *list_a, t_node *list_b)
+void	rule_sort_three(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	int	first;
 	int	second;
@@ -23,30 +23,30 @@ void	rule_sort_three(t_node *list_a, t_node *list_b)
 	third = list_b->next->next->next->key;
 
 	if (first < second && second > third && first < third)
-		swap_and_rotate(list_b, 'b');
+		swap_b_and_rotate_b(list_a, list_b, process);
 	else if (first < second && second > third && first > third)
-		reverse_rotate(list_b, 'b');
+		reverse_rotate_b(list_a, list_b, process);
 	else if (first > second && second < third && first < third)
-		swap(list_b, 'b');
+		swap_b(list_a, list_b, process);
 	else if (first > second && second < third && first > third)
-		rotate(list_b, 'b');
+		rotate_b(list_a, list_b, process);
 	else if (first > second && second > third && first > third)
-		rotate_and_swap(list_b, 'b');
+		rotate_b_and_swap_b(list_a, list_b, process);
 }
 
-void	rule_sort_two (t_node *list_a, t_node *list_b)
+void	rule_sort_two(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	if (list_b->next->key > list_b->next->next->key)
-		rotate(list_b, 'b');
+		rotate_b(list_a, list_b, process);
 }
 
-void	rule_sort(t_node *list_a, t_node *list_b)
+void	rule_sort(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	int len_list_b;
 
 	len_list_b = len_list(list_b);
 	if (len_list_b == 2)
-		rule_sort_two(list_a, list_b);
+		rule_sort_two(list_a, list_b, process);
 	else if (len_list_b == 3)
-		rule_sort_three(list_a, list_b);
+		rule_sort_three(list_a, list_b, process);
 }
