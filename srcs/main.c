@@ -42,8 +42,6 @@ int main(int argc, char *argv[])
 
 	arg_to_list(list_a, list_b, argc, argv);
 
-	show_list(list_a);
-
 	list_null_check(list_a, list_b);
 
 	process = init_process(list_a, list_b);
