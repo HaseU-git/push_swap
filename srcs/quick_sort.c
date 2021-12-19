@@ -46,6 +46,7 @@ int larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process)
 		if (list_b->next->key <= median)
 			rotate_b(list_a, list_b, process);
 		else
+			push_a(list_a, list_b, process);
 		i++;
 	}
 	free(array_b);
@@ -71,6 +72,7 @@ int larger_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 		if (list_a->next->key <= median)
 			rotate_a(list_a, list_b, process);
 		else
+			push_b(list_a, list_b, process);
 		i++;
 	}
 	free(array_a);
