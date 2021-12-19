@@ -12,6 +12,18 @@ void show_list(t_node *dummy)
 	}
 }
 
+void show_ope(t_prs *dummy)
+{
+	t_prs *ptr;
+	ptr = dummy->next;
+
+	while (ptr != dummy)
+	{
+		printf("%d\n", ptr->operation);
+		ptr = ptr->next;
+	}
+}
+
 void list_null_check(t_node *list_a, t_node *list_b)
 {
 	if (list_a == NULL || list_b == NULL)
@@ -50,16 +62,14 @@ int main(int argc, char *argv[])
 	larger_half_a_to_b(list_a, list_b, process);
 	quick_sort(list_a, list_b, process);
 
-	printf("%s", "---=====--\n");
+	printf("%s", "---=a===--\n");
 	show_list(list_a);
-	printf("%s", "---------\n");
+	printf("%s", "----b----\n");
 	show_list(list_b);
+	printf("%s", "----p----\n");
+	show_ope(process);
 
-
-	// printf("%s", "---=====--\n");
-	// show_list(list_a);
-	// printf("%s", "---------\n");
-	// show_list(list_b);
+	system("leaks a.out");
 
 	// write(1, "Error\n", 7); //7であってる？  
 	// 引数を受け取る  
