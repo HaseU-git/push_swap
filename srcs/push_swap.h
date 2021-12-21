@@ -108,6 +108,14 @@ void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_b(t_node *list_a, t_node *list_b, t_prs *process);
 
+// process_write.c
+void put_swap(t_prs *process);
+void put_push(t_prs *process);
+void put_rotate(t_prs *process);
+void put_reverse_rotate(t_prs *process);
+void write_process(t_prs *process);
+void print_process(t_prs *process);
+
 // main.c
 void show_list(t_node *dummy);
 

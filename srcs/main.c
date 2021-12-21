@@ -67,9 +67,10 @@ int main(int argc, char *argv[])
 	printf("%s", "----b----\n");
 	show_list(list_b);
 	printf("%s", "----p----\n");
-	show_ope(process);
+	print_process(process);
+	// show_ope(process);
 
-	system("leaks a.out");
+	// system("leaks a.out");
 
 	// write(1, "Error\n", 7); //7であってる？  
 	// 引数を受け取る  
