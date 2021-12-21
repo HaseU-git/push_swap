@@ -57,10 +57,18 @@ int main(int argc, char *argv[])
 	list_null_check(list_a, list_b);
 
 	process = init_process(list_a, list_b);
-	smaller_half_a_to_b(list_a, list_b, process);
-	quick_sort(list_a, list_b, process);
-	larger_half_a_to_b(list_a, list_b, process);
-	quick_sort(list_a, list_b, process);
+	
+	printf("%d\n", argc);
+
+	if (argc - 1 <= 3)
+		rule_sort_a(list_a, list_b, process);
+	else
+	{
+		smaller_half_a_to_b(list_a, list_b, process);
+		quick_sort(list_a, list_b, process);
+		larger_half_a_to_b(list_a, list_b, process);
+		quick_sort(list_a, list_b, process);
+	}
 
 	printf("%s", "---=a===--\n");
 	show_list(list_a);
@@ -68,7 +76,8 @@ int main(int argc, char *argv[])
 	show_list(list_b);
 	printf("%s", "----p----\n");
 	print_process(process);
-	// show_ope(process);
+	printf("%s", "--pop_p----\n");
+	print_process(pop_index_operation(1, process));
 
 	// system("leaks a.out");
 

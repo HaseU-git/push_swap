@@ -65,12 +65,20 @@ void	rotate(t_node *dummy);
 void	reverse_rotate(t_node *dummy);
 void	push(t_node *stack_one, t_node *stack_two);
 
-// rule_sort.c
+// rule_sort_b.c
 void    swap_b_and_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void    rotate_b_and_swap_b(t_node *list_a, t_node *list_b, t_prs *process);
-void	rule_sort_three(t_node *list_a, t_node *list_b, t_prs *process);
-void    rule_sort_two (t_node *list_a, t_node *list_b, t_prs *process);
-void	rule_sort(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_three_b(t_node *list_a, t_node *list_b, t_prs *process);
+void    rule_sort_two_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_b(t_node *list_a, t_node *list_b, t_prs *process);
+
+// rule_sort_a.c
+void    swap_a_and_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
+void    rotate_a_and_swap_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_three_a(t_node *list_a, t_node *list_b, t_prs *process);
+void    rule_sort_two_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_a(t_node *list_a, t_node *list_b, t_prs *process);
+
 
 // list_utils.c
 t_node	*pop_first(t_node *dummy);
@@ -97,6 +105,7 @@ void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 void put_error();
 t_prs *init_process(t_node *list_a, t_node *list_b);
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation);
+t_prs *pop_index_operation(int index, t_prs *process);
 
 // list_operate_new.c
 void	swap_a(t_node *list_a, t_node *list_b, t_prs *process);

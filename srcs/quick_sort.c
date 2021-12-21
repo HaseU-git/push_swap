@@ -191,7 +191,7 @@ void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process)
 	len = len_list(list_b);
 	if (len <= 3)
 	{
-		rule_sort(list_a, list_b, process);
+		rule_sort_b(list_a, list_b, process);
 		some_head_b_to_tail_a(list_a, list_b, process, len);
 		return ;
 	}

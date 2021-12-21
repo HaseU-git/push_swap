@@ -22,6 +22,25 @@ t_prs *init_process(t_node *list_a, t_node *list_b)
 	return process;
 }
 
+
+t_prs *pop_index_operation(int index, t_prs *process)
+{
+	int num;
+	t_prs *ptr;
+
+	num = 2;
+	process = process->next;
+	while (num < index)
+	{
+		process = process->next;
+		num++;
+	}
+	ptr = process;
+	process->next = process->next->next;
+	process->next->prev = process;
+	return (ptr);
+}
+
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation)
 {
 	t_prs		*new;
