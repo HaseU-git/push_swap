@@ -28,7 +28,7 @@ t_prs *pop_index_operation(int index, t_prs *process)
 	int num;
 	t_prs *ptr;
 
-	num = 2;
+	num = 0;
 	process = process->next;
 	while (num < index)
 	{
