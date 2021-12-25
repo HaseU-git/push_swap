@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process)
 {

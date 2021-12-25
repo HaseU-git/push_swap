@@ -18,7 +18,7 @@ void arg_check(int argc, char *argv[])
 	if (is_error_flag == 1)
 	{
 		write(1, "Error\n", 6);
-        exit(1);
+		exit(1);
 	}	
 }
 
@@ -47,26 +47,26 @@ int is_dupulicated(t_node *list_a)
 
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
-    int i;
-    t_node *new_node;
+	int i;
+	t_node *new_node;
 
-    i = 1;
-    while (i < argc)
-    {
-        new_node = set_node_last((int)str_to_num(argv[i]), list_a);
-        if (new_node == NULL)
-        {
-            free_two_lists(list_a, list_b);
-            write(1, "Error\n", 6);
-            exit(1);
-        }
-        i++;
-    }
+	i = 1;
+	while (i < argc)
+	{
+		new_node = set_node_last((int)str_to_num(argv[i]), list_a);
+		if (new_node == NULL)
+		{
+			free_two_lists(list_a, list_b);
+			write(1, "Error\n", 6);
+			exit(1);
+		}
+		i++;
+	}
 
-    if (is_dupulicated(list_a))
-    {
-        free_two_lists(list_a, list_b);
-        write(1, "Error\n", 6);
-        exit(1);
-    }
+	if (is_dupulicated(list_a))
+	{
+		free_two_lists(list_a, list_b);
+		write(1, "Error\n", 6);
+		exit(1);
+	}
 }

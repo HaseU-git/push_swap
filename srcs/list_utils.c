@@ -37,7 +37,7 @@ void	add_node_first(t_node *dummy, t_node *node)
 void	add_node_last(t_node *dummy, t_node *node)
 {
 	t_node	*last;
-	
+
 	last = dummy;
 	while (last->next != dummy)
 	{

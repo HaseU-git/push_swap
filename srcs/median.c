@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 int *list_a_to_array(t_node *list_a, t_node *list_b, t_prs *process)
@@ -93,5 +92,5 @@ int calculate_median(int *array, int len)
 	else
 		median = (array[len / 2]);
 	return median;
-	
+
 }
