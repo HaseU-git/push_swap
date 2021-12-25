@@ -106,6 +106,7 @@ void put_error();
 t_prs *init_process(t_node *list_a, t_node *list_b);
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation);
 t_prs *pop_index_operation(int index, t_prs *process);
+t_prs *insert_index_operation(t_prs *process, int index, t_ope new_ope);
 
 // list_operate_new.c
 void	swap_a(t_node *list_a, t_node *list_b, t_prs *process);

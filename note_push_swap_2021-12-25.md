@@ -39,6 +39,12 @@ processにはうまく格納されていた。
 - indexをカウントする
 - indexを指定してpopできる関数
 - indexをカウントして挿入できる関数
+	挿入する時に必要になる手順(index=2に挿入したい場合)
+	1. ptrをindexに揃える
+	2. ptr->prev->next = new
+	3. new->prev = ptr->prev
+	4. ptr->prev = new
+	5. new->next = ptr
 
 ### リスト
 

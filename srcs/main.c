@@ -78,6 +78,12 @@ int main(int argc, char *argv[])
 	print_process(process);
 	printf("%s", "--pop_p----\n");
 	write_process(pop_index_operation(0, process));
+	printf("%s", "----p----\n");
+	print_process(process);
+	printf("%s", "----insert_p----\n");
+	insert_index_operation(process, 1, RRB);
+	printf("%s", "----p----\n");
+	print_process(process);
 	// printf("%s", "--leaks----\n");
 	// system("leaks a.out");
 

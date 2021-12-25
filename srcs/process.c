@@ -42,6 +42,29 @@ t_prs *pop_index_operation(int index, t_prs *process)
 	return (ptr);
 }
 
+t_prs *insert_index_operation(t_prs *process, int index, t_ope new_ope)
+{
+	int num;
+	t_prs *new_ptr;
+
+	new_ptr = (t_prs *)malloc(sizeof(t_prs));
+	if (!new_ptr)
+		return (NULL);
+	num = 0;
+	process = process->next;
+	while (num < index)
+	{
+		process = process->next;
+		num = num + 1;
+	}
+	new_ptr->operation = new_ope;
+	process->prev->next = new_ptr;
+	new_ptr->prev = process->prev;
+	process->prev = new_ptr;
+	new_ptr->next = process;
+	return (new_ptr);
+}
+
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation)
 {
 	t_prs		*new;
