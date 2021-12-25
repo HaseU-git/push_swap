@@ -97,7 +97,7 @@ int larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process);
 int larger_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process);
 int smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process);
 void    some_head_b_to_tail_a(t_node *list_a, t_node *list_b, t_prs *process, int num);
-void    some_head_b_to_head_a(t_node *list_a, t_node *list_b, t_prs *process, int len);
+void    some_head_a_to_head_b(t_node *list_a, t_node *list_b, t_prs *process, int len);
 void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 
 // process.c

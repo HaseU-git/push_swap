@@ -5,6 +5,7 @@ RM := rm -f
 SRCS :=	main.c\
 		free.c\
 		quick_sort.c\
+		quick_sort_utils.c\
 		rule_sort_a.c\
 		rule_sort_b.c\
 		list_utils.c\
@@ -12,6 +13,7 @@ SRCS :=	main.c\
 		process_create.c\
 		process_optimize.c\
 		process_write.c\
+		process_print.c\
 		median.c\
 		list_operate_a.c\
 		list_operate_b.c\
