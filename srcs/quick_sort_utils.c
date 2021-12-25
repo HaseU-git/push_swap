@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
