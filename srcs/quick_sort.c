@@ -6,7 +6,7 @@ void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process)
 	int cnt;
 
 	len = len_list(list_b);
-	if (len <= 3)
+	if (len <= 4)
 	{
 		rule_sort_b(list_a, list_b, process);
 		some_head_b_to_tail_a(list_a, list_b, process, len);

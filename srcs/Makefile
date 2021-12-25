@@ -16,7 +16,9 @@ SRCS :=	main.c\
 		process_print.c\
 		median.c\
 		list_operate_a.c\
+		list_operate_a_n.c\
 		list_operate_b.c\
+		list_operate_b_n.c\
 		arg_check.c\
 		arg_utils.c\
 

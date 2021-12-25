@@ -41,8 +41,8 @@ int optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	}
 	if ((ptr->operation == SA && ptr->next->operation == SB) || (ptr->operation == SB && ptr->next->operation == SA))
 	{
-		pop_index_operation(index, process);
-		pop_index_operation(index, process);
+		delete_index_operation(index, process);
+		delete_index_operation(index, process);
 		ptr = insert_index_operation(process, index, SS);
 		if (ptr == NULL)
 			free_error_exit(list_a, list_b, process);
@@ -65,8 +65,8 @@ int optimize_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index
 	}
 	if ((ptr->operation == RRA && ptr->next->operation == RRB) || (ptr->operation == RRB && ptr->next->operation == RRA))
 	{
-		pop_index_operation(index, process);
-		pop_index_operation(index, process);
+		delete_index_operation(index, process);
+		delete_index_operation(index, process);
 		ptr = insert_index_operation(process, index, RRR);
 		if (ptr == NULL)
 			free_error_exit(list_a, list_b, process);
@@ -89,8 +89,8 @@ int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	}
 	if ((ptr->operation == RA && ptr->next->operation == RB) || (ptr->operation == RB && ptr->next->operation == RA))
 	{
-		pop_index_operation(index, process);
-		pop_index_operation(index, process);
+		delete_index_operation(index, process);
+		delete_index_operation(index, process);
 		ptr = insert_index_operation(process, index, RR);
 		if (ptr == NULL)
 			free_error_exit(list_a, list_b, process);
@@ -113,8 +113,8 @@ int optimize_rm_extra(t_prs *process, int index)
 	}
 	if ((ptr->operation == RRA && ptr->next->operation == RA) || (ptr->operation == RA && ptr->next->operation == RRA) || (ptr->operation == RRB && ptr->next->operation == RB) || (ptr->operation == RB && ptr->next->operation == RRB) || (ptr->operation == PB && ptr->next->operation == PA) || (ptr->operation == PA && ptr->next->operation == PB))
 	{
-		pop_index_operation(index, process);
-		pop_index_operation(index, process);
+		delete_index_operation(index, process);
+		delete_index_operation(index, process);
 		return (1);
 	}
 	return (0);

@@ -2,10 +2,10 @@
 
 void	swap_a_and_rotate_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
-//	swap_a(list_a, list_b, process);
-//	rotate_a(list_a, list_b, process);
-	reverse_rotate_a(list_a, list_b, process);
 	swap_a(list_a, list_b, process);
+	rotate_a(list_a, list_b, process);
+//	reverse_rotate_a(list_a, list_b, process);
+//	swap_a(list_a, list_b, process);
 }
 
 void	rotate_a_and_swap_a(t_node *list_a, t_node *list_b, t_prs *process)
@@ -18,26 +18,6 @@ void	rotate_a_and_swap_a(t_node *list_a, t_node *list_b, t_prs *process)
 
 void	rule_sort_four_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	int *array;
-	int min;
-	t_node *ptr;
-	int index;
-
-	array = list_a_to_array(list_a, list_b, process);
-	array = sort_num_array(array, 4);
-	min = array[0];
-	free(array);
-	index = 0;
-	ptr = list_a->next;
-	while (ptr->key != min)
-	{
-		ptr = ptr->next;
-		index = index + 1;
-	}
-	rotate_a_n(list_a, list_b, process, index);
-	push_b(list_a, list_b, process);
-	rule_sort_three_a(list_a, list_b, process);
-	push_a(list_a, list_b, process);
 }
 
 void	rule_sort_three_a(t_node *list_a, t_node *list_b, t_prs *process)
@@ -77,6 +57,4 @@ void	rule_sort_a(t_node *list_a, t_node *list_b, t_prs *process)
 		rule_sort_two_a(list_a, list_b, process);
 	else if (len_list_a == 3)
 		rule_sort_three_a(list_a, list_b, process);
-	else if (len_list_a == 4)
-		rule_sort_four_a(list_a, list_b, process);
 }

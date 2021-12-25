@@ -92,5 +92,4 @@ int calculate_median(int *array, int len)
 	else
 		median = (array[len / 2]);
 	return median;
-
 }

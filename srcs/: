@@ -30,15 +30,16 @@ void delete_index_operation(int index, t_prs *process)
 		num = num + 1;
 	}
 	ptr = process;
-	//printf("-----\n");
-	//printf("%p\n", ptr);
-	//printf("%p\n", process);
+	printf("%p\n", ptr);
+	printf("%p\n", process);
 	process = process->prev;
-	//printf("%p\n", ptr);
-	//printf("%p\n", process);
-	//printf("-----\n");
+	printf("%p\n", ptr);
+	printf("%p\n", process);
 	process->next = ptr->next;
 	process->next->prev = ptr->prev;
+	printf("---\n");
+	write_process(process);
+	printf("---\n");
 	//free(ptr);
 	return ;
 }

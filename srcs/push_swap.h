@@ -103,7 +103,7 @@ void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 // process.c
 t_prs *init_process(t_node *list_a, t_node *list_b);
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation);
-t_prs *pop_index_operation(int index, t_prs *process);
+void delete_index_operation(int index, t_prs *process);
 t_prs *insert_index_operation(t_prs *process, int index, t_ope new_ope);
 
 // list_operate_a.c
@@ -112,11 +112,19 @@ void	rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	reverse_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_a(t_node *list_a, t_node *list_b, t_prs *process);
 
+// list_operate_a_n.c
+void	rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
+void	reverse_rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
+
 // list_operate_b.c
 void	swap_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_b(t_node *list_a, t_node *list_b, t_prs *process);
+
+// list_operate_b_n.c
+void	rotate_b_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
+void	reverse_rotate_b_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
 
 // process_printe.c
 void write_process(t_prs *process);

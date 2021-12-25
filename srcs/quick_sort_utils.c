@@ -36,6 +36,7 @@ int larger_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 	len = len_list(list_a);
 	sort_num_array(array_a, len);
 	median = calculate_median(array_a, len);
+	free(array_a);
 
 	i = 0;
 	while (i < len)
@@ -46,8 +47,6 @@ int larger_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 			push_b(list_a, list_b, process);
 		i++;
 	}
-	free(array_a);
-	array_a = NULL;
 	return len / 2;
 }
 
