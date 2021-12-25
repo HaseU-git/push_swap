@@ -12,6 +12,7 @@ SRCS :=	main.c\
 		process_create.c\
 		process_optimize.c\
 		process_write.c\
+		process_print.c\
 		median.c\
 		list_operate_a.c\
 		list_operate_b.c\
