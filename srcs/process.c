@@ -1,10 +1,5 @@
 #include "push_swap.h"
 
-void put_error()
-{
-	write(1, "Error\n", 6);
-	exit(0);
-}
 
 t_prs *init_process(t_node *list_a, t_node *list_b)
 {

@@ -40,16 +40,19 @@ typedef struct s_prs
 
 
 // arg.c
+void arg_check(int argc, char *argv[]);
+int is_dupulicated(t_node *list_a);
+void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
+
+//arg_utils.c
 int count_digit(int num);
 int len_str(char *str);
 long long str_to_num(char *str);
 int is_int(char *str);
 int	is_num(char *str);
-void arg_check(int argc, char *argv[]);
-int is_dupulicated(t_node *list_a);
-void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 
 // free.c
+void put_error();
 void	free_error_exit(t_node *list_a, t_node *list_b, t_prs *process);
 void    free_all_nodes(t_node *dummy);
 void    free_all_process(t_prs *dummy);
@@ -60,12 +63,6 @@ t_node	*init_node(t_node *dummy);
 t_node	*set_node_first(int key, t_node *dummy);
 void	delete_node(t_node **t, t_node *dummy);
 t_node	*set_node_last(int key, t_node *dummy);
-
-// list_operate.c
-void	swap(t_node *dummy);
-void	rotate(t_node *dummy);
-void	reverse_rotate(t_node *dummy);
-void	push(t_node *stack_one, t_node *stack_two);
 
 // rule_sort_b.c
 void    swap_b_and_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
@@ -104,20 +101,21 @@ void    some_head_b_to_head_a(t_node *list_a, t_node *list_b, t_prs *process, in
 void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 
 // process.c
-void put_error();
 t_prs *init_process(t_node *list_a, t_node *list_b);
 void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operation);
 t_prs *pop_index_operation(int index, t_prs *process);
 t_prs *insert_index_operation(t_prs *process, int index, t_ope new_ope);
 
-// list_operate.c
+// list_operate_a.c
 void	swap_a(t_node *list_a, t_node *list_b, t_prs *process);
-void	swap_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
-void	rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	reverse_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
-void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_a(t_node *list_a, t_node *list_b, t_prs *process);
+
+// list_operate_b.c
+void	swap_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	push_b(t_node *list_a, t_node *list_b, t_prs *process);
 
 // process_write.c
