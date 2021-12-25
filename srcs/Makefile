@@ -13,13 +13,14 @@ SRCS :=	main.c\
 		process_optimize.c\
 		process_write.c\
 		median.c\
-		list_operate_new.c\
+		list_operate.c\
 		arg.c\
 
 OBJS := $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAG) -o $@ $^
+
 
 all: $(NAME)
 
@@ -27,7 +28,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -110,7 +110,7 @@ void update_process(t_node *list_a, t_node *list_b, t_prs *process, t_ope operat
 t_prs *pop_index_operation(int index, t_prs *process);
 t_prs *insert_index_operation(t_prs *process, int index, t_ope new_ope);
 
-// list_operate_new.c
+// list_operate.c
 void	swap_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	swap_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
