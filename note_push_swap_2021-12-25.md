@@ -8,6 +8,9 @@
 
 - [x] 3こいかの時にquicksortではなく、rule_sortにするようにした。
 
+- [x] t_opeにDUMMYを追加した。
+→ 最適化の部分でsaとdummyが同じになってしまって、おかしな挙動になったため。
+
 <hr>
 
 ## 今回やること  
@@ -20,7 +23,7 @@
 
 - [ ] すで整列しているかどうかをチェックする関数  
 
-- [ ] pop_index_processの挙動が違う？  
+- [ ] pop_index_processをfreeするものに書き換える
 
 <hr>
 
@@ -49,7 +52,7 @@ processにはうまく格納されていた。
 
 ### リスト
 
-- RA→RBのRR化
+- [x] RA→RBのRR化
 	1. indexをカウントしておく
 	2. RAかどうかをチェック  
 	3. 次がRBかどうかをチェック  
@@ -60,17 +63,17 @@ processにはうまく格納されていた。
 	8. RBを削除する  
 	9. indexの部分にRRを挿入する
 
-- RB→RAのRR化
+- [x] RB→RAのRR化
 
-- RRA→RRBのRRR化
+- [x] RRA→RRBのRRR化
 
-- RRB→RRAのRRR化
+- [x] RRB→RRAのRRR化
 
-- SA→SBのSS化
+- [x] SA→SBのSS化
 
-- SB→SAのSS化
+- [x] SB→SAのSS化
 
-- RA→RRAの打ち消し
+- [x] RA→RRAの打ち消し
 	1. indexをカウントしておく
 	2. RAかどうかをチェック  
 	3. 次がRRAかどうかをチェック  
@@ -80,15 +83,15 @@ processにはうまく格納されていた。
 	7. indexの部分を取り出す（RRA）
 	8. RRAを削除する  
 
-- RRA→RAの打ち消し
+- [x] RRA→RAの打ち消し
 
-- RB→RRBの打ち消し
+- [x] RB→RRBの打ち消し
 
-- RRB→RBの打ち消し
+- [x] RRB→RBの打ち消し
 
-- PA→PBの打ち消し
+- [x] PA→PBの打ち消し
 
-- PB→PAの打ち消し
+- [x] PB→PAの打ち消し
 
 ### mallocしている部分
 
