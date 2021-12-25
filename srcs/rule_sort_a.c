@@ -37,7 +37,7 @@ void	rule_sort_three_a(t_node *list_a, t_node *list_b, t_prs *process)
 void	rule_sort_two_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	if (list_a->next->key > list_a->next->next->key)
-		rotate_b(list_a, list_b, process);
+		rotate_a(list_a, list_b, process);
 }
 
 void	rule_sort_a(t_node *list_a, t_node *list_b, t_prs *process)
