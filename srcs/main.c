@@ -77,8 +77,8 @@ int main(int argc, char *argv[])
 	printf("%s", "----p----\n");
 	print_process(process);
 	printf("%s", "--pop_p----\n");
-	print_process(pop_index_operation(1, process));
-	printf("%s", "--pop_p----\n");
+	write_process(pop_index_operation(0, process));
+	// printf("%s", "--leaks----\n");
 	// system("leaks a.out");
 
 	// write(1, "Error\n", 7); //7であってる？  

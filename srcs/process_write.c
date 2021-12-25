@@ -31,11 +31,11 @@ void put_rotate(t_prs *process)
 void put_reverse_rotate(t_prs *process)
 {
 	if (process->operation == RRA)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (process->operation == RRB)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	else if (process->operation == RRR)
-		write(1, "rrr\n", 3);
+		write(1, "rrr\n", 4);
 }
 
 void write_process(t_prs *process)

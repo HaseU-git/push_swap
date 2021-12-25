@@ -33,9 +33,10 @@ t_prs *pop_index_operation(int index, t_prs *process)
 	while (num < index)
 	{
 		process = process->next;
-		num++;
+		num = num + 1;
 	}
 	ptr = process;
+	process = process->prev;
 	process->next = process->next->next;
 	process->next->prev = process;
 	return (ptr);
