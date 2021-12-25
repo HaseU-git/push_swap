@@ -26,6 +26,7 @@
 - [ ] pop_index_processをfreeするものに書き換える
 
 - [ ] ファイルの分割  
+→ ls -1の時のprocess_create.cまで分割完了
 
 - [ ] normのクリア  
 

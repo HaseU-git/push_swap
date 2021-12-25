@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 t_prs *init_process(t_node *list_a, t_node *list_b)
 {
 	t_prs *process;

@@ -9,13 +9,13 @@ SRCS :=	main.c\
 		rule_sort_b.c\
 		list_utils.c\
 		list_create.c\
-		process.c\
+		process_create.c\
 		process_optimize.c\
 		process_write.c\
 		median.c\
 		list_operate_a.c\
 		list_operate_b.c\
-		arg.c\
+		arg_check.c\
 		arg_utils.c\
 
 OBJS := $(SRCS:.c=.o)
