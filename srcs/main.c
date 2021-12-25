@@ -66,7 +66,5 @@ int main(int argc, char *argv[])
 	}
 	optimize_process(list_a, list_b, process);
 	print_process(process);
-	printf("%s", "--leaks----\n");
-	system("leaks push_swap");
 	return (0);
 }

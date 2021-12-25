@@ -87,22 +87,11 @@ int *sort_num_array(int *array, int len)
 int calculate_median(int *array, int len)
 {
 	int median;
-	int count;
 
-	count = 0;
-	while (count < len)
-	{
-		median = median + (array[count]) / len;
-		count = count + 1;
-	}
-//	if (len % 2 == 0)
-//	{
-//		median = \
-//			 (array[len / 2 - 1] + array[len / 2]) / 2;
-//	}
-//	else
-//	{
-//		median = array[len / 2];
-//	}
+	if (len % 2 == 0)
+		median = (array[len / 2 - 1] / 2 + array[len / 2] / 2);
+	else
+		median = (array[len / 2]);
 	return median;
+	
 }

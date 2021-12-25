@@ -39,6 +39,7 @@ int larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process)
 	len = len_list(list_b);
 	sort_num_array(array_b, len);
 	median = calculate_median(array_b, len);
+	free(array_b);
 
 	i = 0;
 	while (i < len)
@@ -49,8 +50,6 @@ int larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process)
 			push_a(list_a, list_b, process);
 		i++;
 	}
-	free(array_b);
-	array_b = NULL;
 	return len / 2;
 }
 
@@ -199,6 +198,5 @@ void    quick_sort(t_node *list_a, t_node *list_b, t_prs *process)
 	quick_sort(list_a, list_b, process);
 	some_head_a_to_head_b(list_a, list_b, process, cnt);
 	quick_sort(list_a, list_b, process);
-
 	return ;
 }
