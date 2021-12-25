@@ -16,6 +16,33 @@ void	rotate_a_and_swap_a(t_node *list_a, t_node *list_b, t_prs *process)
 //	reverse_rotate_a(list_a, list_b, process);
 }
 
+void	rule_sort_five_a(t_node *list_a, t_node *list_b, t_prs *process)
+{
+	int *array;
+	int min;
+	t_node *ptr;
+	int index;
+
+	array = list_a_to_array(list_a, list_b, process);
+	array = sort_num_array(array, 5);
+	min = array[0];
+	free(array);
+	index = 0;
+	ptr = list_a->next;
+	while (ptr->key != min)
+	{
+		ptr = ptr->next;
+		index = index + 1;
+	}
+	if (index < 3)
+		rotate_a_n(list_a, list_b, process, index);
+	else if (index >= 3)
+		reverse_rotate_a_n(list_a, list_b, process, 5 - index);
+	push_b(list_a, list_b, process);
+	rule_sort_four_a(list_a, list_b, process);
+	push_a(list_a, list_b, process);
+}
+
 void	rule_sort_four_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	int *array;
@@ -34,7 +61,10 @@ void	rule_sort_four_a(t_node *list_a, t_node *list_b, t_prs *process)
 		ptr = ptr->next;
 		index = index + 1;
 	}
-	rotate_a_n(list_a, list_b, process, index);
+	if (index < 3)
+		rotate_a_n(list_a, list_b, process, index);
+	else if (index == 3)
+		reverse_rotate_a_n(list_a, list_b, process, 1);
 	push_b(list_a, list_b, process);
 	rule_sort_three_a(list_a, list_b, process);
 	push_a(list_a, list_b, process);
@@ -79,4 +109,6 @@ void	rule_sort_a(t_node *list_a, t_node *list_b, t_prs *process)
 		rule_sort_three_a(list_a, list_b, process);
 	else if (len_list_a == 4)
 		rule_sort_four_a(list_a, list_b, process);
+	else if (len_list_a == 5)
+		rule_sort_five_a(list_a, list_b, process);
 }

@@ -67,6 +67,8 @@ t_node	*set_node_last(int key, t_node *dummy);
 // rule_sort_b.c
 void    swap_b_and_rotate_b(t_node *list_a, t_node *list_b, t_prs *process);
 void    rotate_b_and_swap_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_five_b(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	rule_sort_three_b(t_node *list_a, t_node *list_b, t_prs *process);
 void    rule_sort_two_b(t_node *list_a, t_node *list_b, t_prs *process);
 void	rule_sort_b(t_node *list_a, t_node *list_b, t_prs *process);
@@ -74,6 +76,8 @@ void	rule_sort_b(t_node *list_a, t_node *list_b, t_prs *process);
 // rule_sort_a.c
 void    swap_a_and_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
 void    rotate_a_and_swap_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_five_a(t_node *list_a, t_node *list_b, t_prs *process);
+void	rule_sort_four_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	rule_sort_three_a(t_node *list_a, t_node *list_b, t_prs *process);
 void    rule_sort_two_a(t_node *list_a, t_node *list_b, t_prs *process);
 void	rule_sort_a(t_node *list_a, t_node *list_b, t_prs *process);

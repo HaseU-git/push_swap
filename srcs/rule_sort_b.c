@@ -12,7 +12,7 @@ void	rotate_b_and_swap_b(t_node *list_a, t_node *list_b, t_prs *process)
 	swap_b(list_a, list_b, process);
 }
 
-void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
+void	rule_sort_five_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	int *array;
 	int min;
@@ -20,6 +20,7 @@ void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
 	int index;
 
 	array = list_b_to_array(list_a, list_b, process);
+	array = sort_num_array(array, 5);
 	min = array[0];
 	free(array);
 	index = 0;
@@ -29,14 +30,40 @@ void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
 		ptr = ptr->next;
 		index = index + 1;
 	}
-	if (0 < index && index < 3)
-		rotate_b(list_a, list_b, process);
-	if (index == 2)
-		rotate_b(list_a, list_b, process);
-	else if(index == 3)
-		reverse_rotate_b(list_a, list_b, process);
-	some_head_b_to_tail_a(list_a, list_b, process, 1);
-	rule_sort_three_b(list_a, list_b, process->next);
+	if (index < 3)
+		rotate_b_n(list_a, list_b, process, index);
+	else if (index >= 3)
+		reverse_rotate_b_n(list_a, list_b, process, 5 - index);
+	push_a(list_a, list_b, process);
+	rule_sort_four_b(list_a, list_b, process);
+	push_b(list_a, list_b, process);
+}
+
+void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
+{
+	int *array;
+	int min;
+	t_node *ptr;
+	int index;
+
+	array = list_b_to_array(list_a, list_b, process);
+	array = sort_num_array(array, 4);
+	min = array[0];
+	free(array);
+	index = 0;
+	ptr = list_b->next;
+	while (ptr->key != min)
+	{
+		ptr = ptr->next;
+		index = index + 1;
+	}
+	if (index < 3)
+		rotate_b_n(list_a, list_b, process, index);
+	else if (index == 3)
+		reverse_rotate_b_n(list_a, list_b, process, 1);
+	push_a(list_a, list_b, process);
+	rule_sort_three_b(list_a, list_b, process);
+	push_b(list_a, list_b, process);
 }
 
 void	rule_sort_three_b(t_node *list_a, t_node *list_b, t_prs *process)
@@ -78,4 +105,6 @@ void	rule_sort_b(t_node *list_a, t_node *list_b, t_prs *process)
 		rule_sort_three_b(list_a, list_b, process);
 	else if (len_list_b == 4)
 		rule_sort_four_b(list_a, list_b, process);
+	else if (len_list_b == 5)
+		rule_sort_five_b(list_a, list_b, process);
 }
