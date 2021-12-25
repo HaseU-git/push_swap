@@ -34,11 +34,7 @@ void optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 		pop_index_operation(index, process);
 		ptr = insert_index_operation(process, index, RR);
 		if (ptr == NULL)
-		{
-			free_two_lists(list_a, list_b);
-			free_all_process(process);
-			put_error();
-		}
+			free_error_exit(list_a, list_b, process);
 	}
 	return ;
 }

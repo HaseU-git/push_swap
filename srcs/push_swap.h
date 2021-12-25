@@ -49,6 +49,7 @@ int is_dupulicated(t_node *list_a);
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 
 // free.c
+void	free_error_exit(t_node *list_a, t_node *list_b, t_prs *process);
 void    free_all_nodes(t_node *dummy);
 void    free_all_process(t_prs *dummy);
 void    free_two_lists(t_node *list_a, t_node *list_b);
