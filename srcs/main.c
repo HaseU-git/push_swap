@@ -82,7 +82,11 @@ int main(int argc, char *argv[])
 	print_process(process);
 	printf("%s", "----insert_p----\n");
 	insert_index_operation(process, 1, RRB);
-	printf("%s", "----p----\n");
+	insert_index_operation(process, 1, RB);
+	insert_index_operation(process, 1, RA);
+	print_process(process);
+	printf("%s", "----optimie_p----\n");
+	optimize_process(list_a, list_b, process);
 	print_process(process);
 	// printf("%s", "--leaks----\n");
 	// system("leaks a.out");
