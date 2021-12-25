@@ -48,18 +48,13 @@ int main(int argc, char *argv[])
 	t_prs *process;
 
 	arg_check(argc, argv);
-
+	list_a = NULL;
+	list_b = NULL;
 	list_a = init_node(list_a);
 	list_b = init_node(list_b);
-
 	arg_to_list(list_a, list_b, argc, argv);
-
 	list_null_check(list_a, list_b);
-
 	process = init_process(list_a, list_b);
-	
-	printf("%d\n", argc);
-
 	if (argc - 1 <= 3)
 		rule_sort_a(list_a, list_b, process);
 	else
@@ -69,32 +64,6 @@ int main(int argc, char *argv[])
 		larger_half_a_to_b(list_a, list_b, process);
 		quick_sort(list_a, list_b, process);
 	}
-
-	printf("%s", "---=a===--\n");
-	show_list(list_a);
-	printf("%s", "----b----\n");
-	show_list(list_b);
-	printf("%s", "----p----\n");
-	print_process(process);
-	printf("%s", "--pop_p----\n");
-	write_process(pop_index_operation(0, process));
-	printf("%s", "----p----\n");
-	print_process(process);
-	printf("%s", "----insert_p----\n");
-	insert_index_operation(process, 0, RRB);
-	insert_index_operation(process, 0, RB);
-	insert_index_operation(process, 0, RB);
-	insert_index_operation(process, 0, RRB);
-	insert_index_operation(process, 0, RRA);
-	insert_index_operation(process, 0, RA);
-	insert_index_operation(process, 0, RA);
-	insert_index_operation(process, 0, RRA);
-	insert_index_operation(process, 0, PB);
-	insert_index_operation(process, 0, PA);
-	insert_index_operation(process, 0, PA);
-	insert_index_operation(process, 0, PB);
-	print_process(process);
-	printf("%s", "----optimie_p----\n");
 	optimize_process(list_a, list_b, process);
 	print_process(process);
 	// printf("%s", "--leaks----\n");

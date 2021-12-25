@@ -133,7 +133,7 @@ void optimize_process(t_node *list_a, t_node *list_b, t_prs *process);
 int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index);
 int optimize_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index);
 int optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index);
-int optimize_rm_extra(t_node *list_a, t_node *list_b, t_prs *process, int index);
+int optimize_rm_extra(t_prs *process, int index);
 
 // main.c
 void show_list(t_node *dummy);

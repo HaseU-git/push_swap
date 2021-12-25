@@ -16,7 +16,7 @@ void optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 		is_optimized += optimize_r_to_rr(list_a, list_b, process, index);
 		is_optimized += optimize_rr_to_rrr(list_a, list_b, process, index);
 		is_optimized += optimize_s_to_ss(list_a, list_b, process, index);
-		is_remove = optimize_rm_extra(list_a, list_b, process, index);
+		is_remove = optimize_rm_extra(process, index);
 		ptr = ptr->next;
 		index = index + 1;
 		if (is_optimized != 0)
@@ -99,7 +99,7 @@ int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	return (0);
 }
 
-int optimize_rm_extra(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int optimize_rm_extra(t_prs *process, int index)
 {
 	t_prs *ptr;
 	int num;
