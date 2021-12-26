@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void put_swap(t_prs *process)
+void	put_swap(t_prs *process)
 {
 	if (process->operation == SA)
 		write(1, "sa\n", 3);
@@ -10,7 +10,7 @@ void put_swap(t_prs *process)
 		write(1, "ss\n", 3);
 }
 
-void put_push(t_prs *process)
+void	put_push(t_prs *process)
 {
 	if (process->operation == PA)
 		write(1, "pa\n", 3);
@@ -18,7 +18,7 @@ void put_push(t_prs *process)
 		write(1, "pb\n", 3);
 }
 
-void put_rotate(t_prs *process)
+void	put_rotate(t_prs *process)
 {
 	if (process->operation == RA)
 		write(1, "ra\n", 3);
@@ -28,7 +28,7 @@ void put_rotate(t_prs *process)
 		write(1, "rr\n", 3);
 }
 
-void put_reverse_rotate(t_prs *process)
+void	put_reverse_rotate(t_prs *process)
 {
 	if (process->operation == RRA)
 		write(1, "rra\n", 4);

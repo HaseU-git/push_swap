@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void write_process(t_prs *process)
+void	write_process(t_prs *process)
 {
 	put_swap(process);
 	put_push(process);
@@ -8,9 +8,9 @@ void write_process(t_prs *process)
 	put_reverse_rotate(process);
 }
 
-void print_process(t_prs *process)
+void	print_process(t_prs *process)
 {
-	t_prs *ptr;
+	t_prs	*ptr;
 
 	ptr = process->next;
 	while (ptr != process)
