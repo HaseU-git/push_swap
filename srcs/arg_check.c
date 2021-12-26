@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void arg_check(int argc, char *argv[])
+void	arg_check(int argc, char *argv[])
 {
-	int is_error_flag;
-	int i;
+	int	is_error_flag;
+	int	i;
 
 	i = 1;
 	is_error_flag = 0;
@@ -22,18 +22,17 @@ void arg_check(int argc, char *argv[])
 	}	
 }
 
-
-int is_dupulicated(t_node *list_a)
+int	is_dupulicated(t_node *list_a)
 {
-	t_node *fixed_node;
-	t_node *variable_node;
-	int is_dup_flag;
+	t_node	*fixed_node;
+	t_node	*variable_node;
+	int		is_dup_flag;
 
 	fixed_node = list_a->next;
 	is_dup_flag = 0;
 	while (fixed_node != list_a)
 	{
-		variable_node = fixed_node->next; 
+		variable_node = fixed_node->next;
 		while (variable_node != list_a)
 		{
 			if (fixed_node->key == variable_node->key)
@@ -45,10 +44,10 @@ int is_dupulicated(t_node *list_a)
 	return (is_dup_flag);
 }
 
-int is_sorted(t_node *list_a)
+int	is_sorted(t_node *list_a)
 {
-	int flag_sorted;
-	t_node *ptr;
+	int		flag_sorted;
+	t_node	*ptr;
 
 	flag_sorted = 1;
 	ptr = list_a->next;
@@ -61,10 +60,10 @@ int is_sorted(t_node *list_a)
 	return (flag_sorted);
 }
 
-void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
+void	arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
-	int i;
-	t_node *new_node;
+	int		i;
+	t_node	*new_node;
 
 	i = 1;
 	while (i < argc)
@@ -78,7 +77,6 @@ void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 		}
 		i++;
 	}
-
 	if (is_dupulicated(list_a))
 	{
 		free_two_lists(list_a, list_b);
