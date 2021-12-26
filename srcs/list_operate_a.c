@@ -2,8 +2,8 @@
 
 void	swap_a(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	first = pop_first(list_a);
 	second = pop_first(list_a);

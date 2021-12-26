@@ -2,7 +2,7 @@
 
 void	rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (count < n)
@@ -12,9 +12,9 @@ void	rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
 	}
 }
 
-void	reverse_rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
+void	reverse_rotate_an(t_node *list_a, t_node *list_b, t_prs *process, int n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (count < n)
