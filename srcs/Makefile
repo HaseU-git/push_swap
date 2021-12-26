@@ -8,6 +8,7 @@ SRCS :=	main.c\
 		quick_sort_utils.c\
 		rule_sort_a.c\
 		rule_sort_b.c\
+		rule_sort_utils.c\
 		list_utils.c\
 		list_create.c\
 		process_create.c\

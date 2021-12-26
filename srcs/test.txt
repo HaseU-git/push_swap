@@ -1,0 +1,7 @@
+push_swap.h: Error!
+Error: LINE_TOO_LONG        (line: 107, col:  84):	line too long
+Error: LINE_TOO_LONG        (line: 119, col:  86):	line too long
+Error: LINE_TOO_LONG        (line: 129, col:  86):	line too long
+Error: LINE_TOO_LONG        (line: 143, col:  89):	line too long
+Error: LINE_TOO_LONG        (line: 144, col:  86):	line too long
+Error: LINE_TOO_LONG        (line: 145, col:  89):	line too long

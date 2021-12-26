@@ -72,7 +72,7 @@ int	smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process)
 	return (len / 2);
 }
 
-void	heada_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
+void	a_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
 {
 	int	cnt;
 
@@ -84,7 +84,7 @@ void	heada_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
 	}
 }
 
-void	headb_to_taila_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
+void	b_to_taila_n(t_node *list_a, t_node *list_b, t_prs *process, int n)
 {
 	int	cnt;
 

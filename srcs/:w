@@ -98,8 +98,8 @@ int			calculate_median(int *array, int len);
 int			larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process);
 int			larger_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process);
 int			smaller_half_a_to_b(t_node *list_a, t_node *list_b, t_prs *process);
-void		b_to_taila_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
-void		a_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
+void		headb_to_taila_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
+void		heada_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
 void		quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 
 // process.c

@@ -9,12 +9,12 @@ void	quick_sort(t_node *list_a, t_node *list_b, t_prs *process)
 	if (len <= 5)
 	{
 		rule_sort_b(list_a, list_b, process);
-		headb_to_taila_n(list_a, list_b, process, len);
+		b_to_taila_n(list_a, list_b, process, len);
 		return ;
 	}
 	cnt = larger_half_b_to_a(list_a, list_b, process);
 	quick_sort(list_a, list_b, process);
-	heada_to_headb_n(list_a, list_b, process, cnt);
+	a_to_headb_n(list_a, list_b, process, cnt);
 	quick_sort(list_a, list_b, process);
 	return ;
 }
