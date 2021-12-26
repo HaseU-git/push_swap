@@ -76,7 +76,7 @@ t_prs	*insert_index_operation(t_prs *process, int index, t_ope new_ope)
 	return (new_ptr);
 }
 
-void 	update_prcs(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope)
+void	update_prcs(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope)
 {
 	t_prs	*new;
 	t_prs	*last;
