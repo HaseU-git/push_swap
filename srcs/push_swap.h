@@ -104,7 +104,7 @@ void		quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 
 // process.c
 t_prs		*init_process(t_node *list_a, t_node *list_b);
-void		update_process(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope);
+void		update_prcs(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope);
 void		delete_index_operation(int index, t_prs *process);
 t_prs		*insert_index_operation(t_prs *process, int index, t_ope new_ope);
 
