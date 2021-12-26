@@ -57,8 +57,8 @@ int	main(int argc, char *argv[])
 	arg_check(argc, argv);
 	list_a = NULL;
 	list_b = NULL;
-	list_a = init_node(list_a);
-	list_b = init_node(list_b);
+	list_a = init_node();
+	list_b = init_node();
 	arg_to_list(list_a, list_b, argc, argv);
 	list_null_check(list_a, list_b);
 	process = init_process(list_a, list_b);

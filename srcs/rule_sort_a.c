@@ -37,7 +37,7 @@ void	rule_sort_five_a(t_node *list_a, t_node *list_b, t_prs *process)
 	if (index < 3)
 		rotate_a_n(list_a, list_b, process, index);
 	else if (index >= 3)
-		reverse_rotate_a_n(list_a, list_b, process, 5 - index);
+		reverse_rotate_an(list_a, list_b, process, 5 - index);
 	push_b(list_a, list_b, process);
 	rule_sort_four_a(list_a, list_b, process);
 	push_a(list_a, list_b, process);
@@ -64,7 +64,7 @@ void	rule_sort_four_a(t_node *list_a, t_node *list_b, t_prs *process)
 	if (index < 3)
 		rotate_a_n(list_a, list_b, process, index);
 	else if (index == 3)
-		reverse_rotate_a_n(list_a, list_b, process, 1);
+		reverse_rotate_an(list_a, list_b, process, 1);
 	push_b(list_a, list_b, process);
 	rule_sort_three_a(list_a, list_b, process);
 	push_a(list_a, list_b, process);
