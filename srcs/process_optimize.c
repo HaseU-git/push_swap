@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-void optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
+void	optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	t_prs *ptr;
-	int index;
-	int is_optimized;
-	int is_remove;
+	t_prs	*ptr;
+	int		index;
+	int		is_optimized;
+	int		is_remove;
 
 	index = 0;
 	ptr = process->next;
@@ -14,7 +14,7 @@ void optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 		is_optimized = 0;
 		is_remove = 0;
 		is_optimized += optimize_r_to_rr(list_a, list_b, process, index);
-		is_optimized += optimize_rr_to_rrr(list_a, list_b, process, index);
+		is_optimized += opt_rr_to_rrr(list_a, list_b, process, index);
 		is_optimized += optimize_s_to_ss(list_a, list_b, process, index);
 		is_remove = optimize_rm_extra(process, index);
 		ptr = ptr->next;
@@ -27,10 +27,10 @@ void optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 	return ;
 }
 
-int optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
-	t_prs *ptr;
-	int num;
+	t_prs	*ptr;
+	int		num;
 
 	num = 0;
 	ptr = process->next;
@@ -39,7 +39,8 @@ int optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 		num = num + 1;
 		ptr = ptr->next;
 	}
-	if ((ptr->operation == SA && ptr->next->operation == SB) || (ptr->operation == SB && ptr->next->operation == SA))
+	if ((ptr->operation == SA && ptr->next->operation == SB) || \
+	(ptr->operation == SB && ptr->next->operation == SA))
 	{
 		delete_index_operation(index, process);
 		delete_index_operation(index, process);
@@ -51,10 +52,10 @@ int optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	return (0);
 }
 
-int optimize_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	opt_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
-	t_prs *ptr;
-	int num;
+	t_prs	*ptr;
+	int		num;
 
 	num = 0;
 	ptr = process->next;
@@ -63,7 +64,8 @@ int optimize_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index
 		num = num + 1;
 		ptr = ptr->next;
 	}
-	if ((ptr->operation == RRA && ptr->next->operation == RRB) || (ptr->operation == RRB && ptr->next->operation == RRA))
+	if ((ptr->operation == RRA && ptr->next->operation == RRB) || \
+	(ptr->operation == RRB && ptr->next->operation == RRA))
 	{
 		delete_index_operation(index, process);
 		delete_index_operation(index, process);
@@ -75,10 +77,10 @@ int optimize_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index
 	return (0);
 }
 
-int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
-	t_prs *ptr;
-	int num;
+	t_prs	*ptr;
+	int		num;
 
 	num = 0;
 	ptr = process->next;
@@ -87,7 +89,8 @@ int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 		num = num + 1;
 		ptr = ptr->next;
 	}
-	if ((ptr->operation == RA && ptr->next->operation == RB) || (ptr->operation == RB && ptr->next->operation == RA))
+	if ((ptr->operation == RA && ptr->next->operation == RB) || \
+	(ptr->operation == RB && ptr->next->operation == RA))
 	{
 		delete_index_operation(index, process);
 		delete_index_operation(index, process);
@@ -99,10 +102,10 @@ int optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	return (0);
 }
 
-int optimize_rm_extra(t_prs *process, int index)
+int	optimize_rm_extra(t_prs *process, int index)
 {
-	t_prs *ptr;
-	int num;
+	t_prs	*ptr;
+	int		num;
 
 	num = 0;
 	ptr = process->next;
@@ -111,7 +114,12 @@ int optimize_rm_extra(t_prs *process, int index)
 		num = num + 1;
 		ptr = ptr->next;
 	}
-	if ((ptr->operation == RRA && ptr->next->operation == RA) || (ptr->operation == RA && ptr->next->operation == RRA) || (ptr->operation == RRB && ptr->next->operation == RB) || (ptr->operation == RB && ptr->next->operation == RRB) || (ptr->operation == PB && ptr->next->operation == PA) || (ptr->operation == PA && ptr->next->operation == PB))
+	if ((ptr->operation == RRA && ptr->next->operation == RA) || \
+	(ptr->operation == RA && ptr->next->operation == RRA) || \
+	(ptr->operation == RRB && ptr->next->operation == RB) || \
+	(ptr->operation == RB && ptr->next->operation == RRB) || \
+	(ptr->operation == PB && ptr->next->operation == PA) || \
+	(ptr->operation == PA && ptr->next->operation == PB))
 	{
 		delete_index_operation(index, process);
 		delete_index_operation(index, process);
