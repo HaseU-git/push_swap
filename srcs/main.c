@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-void show_list(t_node *dummy)
+void	show_list(t_node *dummy)
 {
-	t_node *ptr;
-	ptr = dummy->next;
+	t_node	*ptr;
 
+	ptr = dummy->next;
 	while (ptr != dummy)
 	{
 		printf("%d\n", ptr->key);
@@ -12,11 +12,11 @@ void show_list(t_node *dummy)
 	}
 }
 
-void show_ope(t_prs *dummy)
+void	show_ope(t_prs *dummy)
 {
-	t_prs *ptr;
-	ptr = dummy->next;
+	t_prs	*ptr;
 
+	ptr = dummy->next;
 	while (ptr != dummy)
 	{
 		printf("%d\n", ptr->operation);
@@ -24,7 +24,7 @@ void show_ope(t_prs *dummy)
 	}
 }
 
-void list_null_check(t_node *list_a, t_node *list_b)
+void	list_null_check(t_node *list_a, t_node *list_b)
 {
 	if (list_a == NULL || list_b == NULL)
 	{
@@ -40,12 +40,19 @@ void list_null_check(t_node *list_a, t_node *list_b)
 	return ;
 }
 
-
-int main(int argc, char *argv[])
+void	split_sort(t_node *list_a, t_node *list_b, t_prs *process)
 {
-	t_node *list_a;
-	t_node *list_b;
-	t_prs *process;
+	smaller_half_a_to_b(list_a, list_b, process);
+	quick_sort(list_a, list_b, process);
+	larger_half_a_to_b(list_a, list_b, process);
+	quick_sort(list_a, list_b, process);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_node	*list_a;
+	t_node	*list_b;
+	t_prs	*process;
 
 	arg_check(argc, argv);
 	list_a = NULL;
@@ -56,16 +63,11 @@ int main(int argc, char *argv[])
 	list_null_check(list_a, list_b);
 	process = init_process(list_a, list_b);
 	if (is_sorted(list_a) != 1)
-		{
+	{
 		if (argc - 1 <= 5)
 			rule_sort_a(list_a, list_b, process);
 		else
-		{
-			smaller_half_a_to_b(list_a, list_b, process);
-			quick_sort(list_a, list_b, process);
-			larger_half_a_to_b(list_a, list_b, process);
-			quick_sort(list_a, list_b, process);
-		}
+			split_sort(list_a, list_b, process);
 	}
 	optimize_process(list_a, list_b, process);
 	print_process(process);
