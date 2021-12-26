@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-t_node	*init_node()
+t_node	*init_node(void)
 {
-	t_node *dummy;
+	t_node	*dummy;
 
 	dummy = (t_node *)malloc(sizeof(t_node));
 	if (!dummy)
-		return NULL;
+		return (NULL);
 	dummy->next = dummy;
 	dummy->prev = dummy;
 	return (dummy);
@@ -27,7 +27,7 @@ void	check_nodes(t_node *a_dummy, t_node *b_dummy)
 
 t_node	*set_node_first(int key, t_node *dummy)
 {
-	t_node		*x;
+	t_node	*x;
 
 	x = (t_node *)malloc(sizeof(t_node));
 	if (!x)
