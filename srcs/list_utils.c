@@ -12,8 +12,8 @@ t_node	*pop_first(t_node *dummy)
 
 t_node	*pop_last(t_node *dummy)
 {
-	t_node *last;
-	t_node *node;
+	t_node	*last;
+	t_node	*node;
 
 	last = dummy;
 	while (last->next != dummy)
@@ -49,10 +49,10 @@ void	add_node_last(t_node *dummy, t_node *node)
 	node->prev = last;
 }
 
-int len_list(t_node *dummy)
+int	len_list(t_node *dummy)
 {
-	int len;
-	t_node *ptr;
+	int		len;
+	t_node	*ptr;
 
 	ptr = dummy;
 	len = 0;
@@ -61,5 +61,5 @@ int len_list(t_node *dummy)
 		ptr = ptr->next;
 		len++;
 	}
-	return len;
+	return (len);
 }
