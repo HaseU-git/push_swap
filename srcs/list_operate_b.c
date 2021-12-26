@@ -18,7 +18,7 @@ void	rotate_b(t_node *list_a, t_node *list_b, t_prs *process)
 	update_prcs(list_a, list_b, process, RB);
 }
 
-void	reverse_rotate_b(t_node *list_a, t_node *list_b, t_prs *process)
+void	r_rotate_b(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	add_node_first(list_b, pop_last(list_b));
 	update_prcs(list_a, list_b, process, RRB);

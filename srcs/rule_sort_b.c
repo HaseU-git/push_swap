@@ -21,7 +21,7 @@ void	rule_sort_five_b(t_node *list_a, t_node *list_b, t_prs *process)
 	if (index < 3)
 		rotate_b_n(list_a, list_b, process, index);
 	else if (index >= 3)
-		reverse_rotate_bn(list_a, list_b, process, 5 - index);
+		r_rotate_bn(list_a, list_b, process, 5 - index);
 	push_a(list_a, list_b, process);
 	rule_sort_four_b(list_a, list_b, process);
 	push_b(list_a, list_b, process);
@@ -48,7 +48,7 @@ void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
 	if (index < 3)
 		rotate_b_n(list_a, list_b, process, index);
 	else if (index == 3)
-		reverse_rotate_bn(list_a, list_b, process, 1);
+		r_rotate_bn(list_a, list_b, process, 1);
 	push_a(list_a, list_b, process);
 	rule_sort_three_b(list_a, list_b, process);
 	push_b(list_a, list_b, process);
@@ -66,7 +66,7 @@ void	rule_sort_three_b(t_node *list_a, t_node *list_b, t_prs *process)
 	if (first < second && second > third && first < third)
 		swap_b_and_rotate_b(list_a, list_b, process);
 	else if (first < second && second > third && first > third)
-		reverse_rotate_b(list_a, list_b, process);
+		r_rotate_b(list_a, list_b, process);
 	else if (first > second && second < third && first < third)
 		swap_b(list_a, list_b, process);
 	else if (first > second && second < third && first > third)

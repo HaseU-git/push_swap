@@ -13,9 +13,9 @@ void	optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 	{
 		is_optimized = 0;
 		is_remove = 0;
-		is_optimized += optimize_r_to_rr(list_a, list_b, process, index);
-		is_optimized += opt_rr_to_rrr(list_a, list_b, process, index);
-		is_optimized += optimize_s_to_ss(list_a, list_b, process, index);
+		is_optimized += opt_rr(list_a, list_b, process, index);
+		is_optimized += opt_rrr(list_a, list_b, process, index);
+		is_optimized += opt_ss(list_a, list_b, process, index);
 		is_remove = optimize_rm_extra(process, index);
 		ptr = ptr->next;
 		index = index + 1;
@@ -27,7 +27,7 @@ void	optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 	return ;
 }
 
-int	optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	opt_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
 	t_prs	*ptr;
 	int		num;
@@ -52,7 +52,7 @@ int	optimize_s_to_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	return (0);
 }
 
-int	opt_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	opt_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
 	t_prs	*ptr;
 	int		num;
@@ -77,7 +77,7 @@ int	opt_rr_to_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 	return (0);
 }
 
-int	optimize_r_to_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+int	opt_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
 {
 	t_prs	*ptr;
 	int		num;
