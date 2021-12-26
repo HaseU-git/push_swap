@@ -45,6 +45,22 @@ int is_dupulicated(t_node *list_a)
 	return (is_dup_flag);
 }
 
+int is_sorted(t_node *list_a)
+{
+	int flag_sorted;
+	t_node *ptr;
+
+	flag_sorted = 1;
+	ptr = list_a->next;
+	while (ptr->next != list_a)
+	{
+		if (ptr->key > ptr->next->key)
+			flag_sorted = 0;
+		ptr = ptr->next;
+	}
+	return (flag_sorted);
+}
+
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
 	int i;

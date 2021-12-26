@@ -55,14 +55,17 @@ int main(int argc, char *argv[])
 	arg_to_list(list_a, list_b, argc, argv);
 	list_null_check(list_a, list_b);
 	process = init_process(list_a, list_b);
-	if (argc - 1 <= 5)
-		rule_sort_a(list_a, list_b, process);
-	else
-	{
-		smaller_half_a_to_b(list_a, list_b, process);
-		quick_sort(list_a, list_b, process);
-		larger_half_a_to_b(list_a, list_b, process);
-		quick_sort(list_a, list_b, process);
+	if (is_sorted(list_a) != 1)
+		{
+		if (argc - 1 <= 5)
+			rule_sort_a(list_a, list_b, process);
+		else
+		{
+			smaller_half_a_to_b(list_a, list_b, process);
+			quick_sort(list_a, list_b, process);
+			larger_half_a_to_b(list_a, list_b, process);
+			quick_sort(list_a, list_b, process);
+		}
 	}
 	optimize_process(list_a, list_b, process);
 	print_process(process);

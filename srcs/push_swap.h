@@ -42,6 +42,7 @@ typedef struct s_prs
 // arg.c
 void arg_check(int argc, char *argv[]);
 int is_dupulicated(t_node *list_a);
+int is_sorted(t_node *list_a);
 void arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[]);
 
 //arg_utils.c
