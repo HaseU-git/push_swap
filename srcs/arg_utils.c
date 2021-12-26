@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int count_digit(int num)
+int	count_digit(int num)
 {
-	int digit;
+	int	digit;
 
 	digit = 1;
 	num = num / 10;
@@ -14,9 +14,9 @@ int count_digit(int num)
 	return (digit);
 }
 
-int len_str(char *str)
+int	len_str(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (*str == '-')
@@ -29,10 +29,10 @@ int len_str(char *str)
 	return (len);
 }
 
-long long str_to_num(char *str)
+long long	str_to_num(char *str)
 {
-	int	i;
-	int	sign;
+	int				i;
+	int				sign;
 	unsigned long	ret;
 
 	i = 0;
@@ -52,10 +52,10 @@ long long str_to_num(char *str)
 	return (sign * ret);
 }
 
-int is_int(char *str)
+int	is_int(char *str)
 {
-	int int_flag;
-	int max_digit;
+	int	int_flag;
+	int	max_digit;
 
 	int_flag = 1;
 	max_digit = count_digit(INT_MAX);
@@ -65,14 +65,13 @@ int is_int(char *str)
 		int_flag = 0;
 	else if (INT_MAX < str_to_num(str))
 		int_flag = 0;
-	return int_flag;
-
+	return (int_flag);
 }
 
 int	is_num(char *str)
 {
-	int is_num_flag;
-	int i;
+	int	is_num_flag;
+	int	i;
 
 	is_num_flag = 1;
 	i = 0;
@@ -81,7 +80,6 @@ int	is_num(char *str)
 		i = i + 1;
 		if (!('1' <= str[i] && str[i] <= '9'))
 			is_num_flag = 0;
-
 	}
 	else if ((str[i] == '0' && str[i + 1] != '\0') || str[i] == '\0')
 		is_num_flag = 0;
@@ -93,4 +91,3 @@ int	is_num(char *str)
 	}
 	return (is_num_flag);
 }
-
