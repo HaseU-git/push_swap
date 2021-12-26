@@ -17,7 +17,7 @@
 - [ ] pop_index_processをfreeするものに書き換える
 → popをdeleteにしようとして、freeを使ったらプログラムが動かなくなった
 
-- [ ] normのクリア  
+- [x] normのクリア  
 
 - [ ] pdfのチェック  
 
