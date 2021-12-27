@@ -91,7 +91,6 @@ void	arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
 	if (is_dupulicated(list_a))
 	{
 		free_two_lists(list_a, list_b);
-		write(1, "Error\n", 6);
-		exit(1);
+		put_error();
 	}
 }

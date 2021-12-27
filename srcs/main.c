@@ -85,6 +85,5 @@ int	main(int argc, char *argv[])
 	sort_list(list_a, list_b, process, argc);
 	optimize_process(list_a, list_b, process);
 	print_process(process);
-	//system("leaks push_swap");
 	return (0);
 }

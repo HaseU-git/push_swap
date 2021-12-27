@@ -12,7 +12,6 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
@@ -132,6 +131,7 @@ void		r_rotate_a(t_node *list_a, t_node *list_b, t_prs *process);
 void		push_a(t_node *list_a, t_node *list_b, t_prs *process);
 
 // list_operate_a_n.c
+
 void		rotate_a_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
 void		r_rotate_an(t_node *list_a, t_node *list_b, t_prs *process, int n);
 
@@ -162,13 +162,12 @@ t_prs		*opt_rrr(t_prs *process);
 t_prs		*opt_ss(t_prs *process);
 t_prs		*optimize_rm_extra(t_prs *process);
 
-// main.c
-void		show_list(t_node *dummy);
-
-// ft_split.c
+// ft_strlcpy.c
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void		free_all_str_list(char **ret);
 void		free_str_list(char **ret, int j);
+
+// ft_split.c
 int			len_str_list(char const *s, char c);
 int			len_el(char const *s, char c, int i);
 void		fill_ret(char const *s, char c, char **ret);

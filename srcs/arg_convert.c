@@ -85,32 +85,12 @@ char	**ft_split(char const *s, char c)
 		put_error();
 	ret[0] = (char *)malloc(sizeof(char) * 2);
 	if (ret[0] == NULL)
+	{
+		free_all_str_list(ret);
 		put_error();
+	}
 	ret[0][0] = ' ';
 	ret[0][1] = '\0';
 	fill_ret(s, c, ret + 1);
 	return (ret);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	char **temp;
-// 	int i;
-// 
-// 	temp = ft_split("1 2 3 4 5", ' ');
-// 	while (*temp != NULL)
-// 	{
-// 	
-// 		printf(":%s:\n", *temp);
-// 		temp++;
-// 	}
-// 	i = 0;
-// 	while (i < argc)
-// 	{
-// 		printf(":%s:\n", *argv);
-// 		argv++;
-// 		i++;
-// 	}
-// 	printf("%s\n", *temp);
-// 	printf("%s\n", *argv);
-// }

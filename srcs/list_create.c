@@ -20,6 +20,7 @@ t_node	*init_node(char **str_list)
 	if (!dummy)
 	{
 		free_all_str_list(str_list);
+		str_list = NULL;
 		return (NULL);
 	}
 	dummy->next = dummy;
