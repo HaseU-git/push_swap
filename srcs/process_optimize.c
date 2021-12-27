@@ -15,117 +15,69 @@
 void	optimize_process(t_node *list_a, t_node *list_b, t_prs *process)
 {
 	t_prs	*ptr;
-	int		index;
-	int		is_optimized;
-	int		is_remove;
 
-	index = 0;
 	ptr = process->next;
 	while (ptr != process)
 	{
-		is_optimized = 0;
-		is_remove = 0;
-		is_optimized += opt_rr(list_a, list_b, process, index);
-		is_optimized += opt_rrr(list_a, list_b, process, index);
-		is_optimized += opt_ss(list_a, list_b, process, index);
-		is_remove = optimize_rm_extra(process, index);
+		ptr = opt_rr(ptr);
+		ptr = opt_rrr(ptr);
+		ptr = opt_ss(ptr);
+		ptr = optimize_rm_extra(ptr);
 		ptr = ptr->next;
-		index = index + 1;
-		if (is_optimized != 0)
-			index = index - 1 * is_optimized;
-		if (is_remove != 0)
-			index = index - 2;
 	}
 	return ;
 }
 
-int	opt_ss(t_node *list_a, t_node *list_b, t_prs *process, int index)
+t_prs	*opt_ss(t_prs *process)
 {
 	t_prs	*ptr;
-	int		num;
 
-	num = 0;
-	ptr = process->next;
-	while (num < index)
-	{
-		num = num + 1;
-		ptr = ptr->next;
-	}
+	ptr = process;
 	if ((ptr->operation == SA && ptr->next->operation == SB) || \
 	(ptr->operation == SB && ptr->next->operation == SA))
 	{
-		delete_index_operation(index, process);
-		delete_index_operation(index, process);
-		ptr = insert_index_operation(process, index, SS);
-		if (ptr == NULL)
-			free_error_exit(list_a, list_b, process);
-		return (1);
+		ptr = ptr->next;
+		delete_index_operation(process);
+		ptr->operation = SS;
 	}
-	return (0);
+	return (ptr);
 }
 
-int	opt_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+t_prs	*opt_rrr(t_prs *process)
 {
 	t_prs	*ptr;
-	int		num;
 
-	num = 0;
-	ptr = process->next;
-	while (num < index)
-	{
-		num = num + 1;
-		ptr = ptr->next;
-	}
+	ptr = process;
 	if ((ptr->operation == RRA && ptr->next->operation == RRB) || \
 	(ptr->operation == RRB && ptr->next->operation == RRA))
 	{
-		delete_index_operation(index, process);
-		delete_index_operation(index, process);
-		ptr = insert_index_operation(process, index, RRR);
-		if (ptr == NULL)
-			free_error_exit(list_a, list_b, process);
-		return (1);
+		ptr = process->next;
+		delete_index_operation(process);
+		ptr->operation = RRR;
 	}
-	return (0);
+	return (ptr);
 }
 
-int	opt_rr(t_node *list_a, t_node *list_b, t_prs *process, int index)
+t_prs	*opt_rr(t_prs *process)
 {
 	t_prs	*ptr;
-	int		num;
 
-	num = 0;
-	ptr = process->next;
-	while (num < index)
-	{
-		num = num + 1;
-		ptr = ptr->next;
-	}
+	ptr = process;
 	if ((ptr->operation == RA && ptr->next->operation == RB) || \
 	(ptr->operation == RB && ptr->next->operation == RA))
 	{
-		delete_index_operation(index, process);
-		delete_index_operation(index, process);
-		ptr = insert_index_operation(process, index, RR);
-		if (ptr == NULL)
-			free_error_exit(list_a, list_b, process);
-		return (1);
+		ptr = process->next;
+		delete_index_operation(process);
+		ptr->operation = RR;
 	}
-	return (0);
+	return (ptr);
 }
 
-int	optimize_rm_extra(t_prs *process, int index)
+t_prs	*optimize_rm_extra(t_prs *process)
 {
 	t_prs	*ptr;
-	int		num;
 
-	num = 0;
-	ptr = process->next;
-	while (num < index)
-	{
-		num = num + 1;
-		ptr = ptr->next;
-	}
+	ptr = process;
 	if ((ptr->operation == RRA && ptr->next->operation == RA) || \
 	(ptr->operation == RA && ptr->next->operation == RRA) || \
 	(ptr->operation == RRB && ptr->next->operation == RB) || \
@@ -133,9 +85,11 @@ int	optimize_rm_extra(t_prs *process, int index)
 	(ptr->operation == PB && ptr->next->operation == PA) || \
 	(ptr->operation == PA && ptr->next->operation == PB))
 	{
-		delete_index_operation(index, process);
-		delete_index_operation(index, process);
-		return (1);
+		ptr = process->next;
+		delete_index_operation(process);
+		process = ptr->next;
+		delete_index_operation(ptr);
+		ptr = process->prev;
 	}
-	return (0);
+	return (ptr);
 }

@@ -18,20 +18,23 @@ int	larger_half_b_to_a(t_node *list_a, t_node *list_b, t_prs *process)
 	int	len;
 	int	median;
 	int	i;
+	int	min;
 
 	array_b = list_b_to_array(list_a, list_b, process);
 	len = len_list(list_b);
 	sort_num_array(array_b, len);
 	median = calculate_median(array_b, len);
+	min = array_b[0];
 	free(array_b);
-	i = 0;
-	while (i < len)
+	i = -1;
+	while (++i < len)
 	{
-		if (list_b->next->key <= median)
+		if (list_b->next->key == min)
+			b_to_taila_n(list_a, list_b, process, 1);
+		else if (list_b->next->key <= median)
 			rotate_b(list_a, list_b, process);
 		else
 			push_a(list_a, list_b, process);
-		i++;
 	}
 	return (len / 2);
 }

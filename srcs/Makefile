@@ -28,7 +28,6 @@ OBJS := $(SRCS:.c=.o)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $@ $^
 
-
 all: $(NAME)
 
 clean:

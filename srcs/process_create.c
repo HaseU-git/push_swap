@@ -27,53 +27,15 @@ t_prs	*init_process(t_node *list_a, t_node *list_b)
 	return (process);
 }
 
-void	delete_index_operation(int index, t_prs *process)
+void	delete_index_operation(t_prs *process)
 {
-	int		num;
-	t_prs	*ptr;
+	t_prs	*ptr_prev;
 
-	num = 0;
-	process = process->next;
-	while (num < index)
-	{
-		process = process->next;
-		num = num + 1;
-	}
-	ptr = process;
-	//printf("-----\n");
-	//printf("%p\n", ptr);
-	//printf("%p\n", process);
-	process = process->prev;
-	//printf("%p\n", ptr);
-	//printf("%p\n", process);
-	//printf("-----\n");
-	process->next = ptr->next;
-	process->next->prev = ptr->prev;
-	//free(ptr);
+	ptr_prev = process->prev;
+	process->next->prev = ptr_prev;
+	ptr_prev->next = process->next;
+	free(process);
 	return ;
-}
-
-t_prs	*insert_index_operation(t_prs *process, int index, t_ope new_ope)
-{
-	int		num;
-	t_prs	*new_ptr;
-
-	new_ptr = (t_prs *)malloc(sizeof(t_prs));
-	if (!new_ptr)
-		return (NULL);
-	num = 0;
-	process = process->next;
-	while (num < index)
-	{
-		process = process->next;
-		num = num + 1;
-	}
-	new_ptr->operation = new_ope;
-	process->prev->next = new_ptr;
-	new_ptr->prev = process->prev;
-	process->prev = new_ptr;
-	new_ptr->next = process;
-	return (new_ptr);
 }
 
 void	update_prcs(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope)

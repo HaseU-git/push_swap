@@ -71,6 +71,7 @@ void		free_two_lists(t_node *list_a, t_node *list_b);
 t_node		*init_node(void);
 t_node		*set_node_first(int key, t_node *dummy);
 void		delete_node(t_node **t, t_node *dummy);
+void		replace_index_operation(t_prs *process, int index, t_ope new_ope);
 t_node		*set_node_last(int key, t_node *dummy);
 
 // rule_sort_b.c
@@ -114,11 +115,10 @@ void		b_to_taila_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
 void		a_to_headb_n(t_node *list_a, t_node *list_b, t_prs *process, int n);
 void		quick_sort(t_node *list_a, t_node *list_b, t_prs *process);
 
-// process.c
+// process_create.c
 t_prs		*init_process(t_node *list_a, t_node *list_b);
 void		update_prcs(t_node *list_a, t_node *list_b, t_prs *prcs, t_ope ope);
-void		delete_index_operation(int index, t_prs *process);
-t_prs		*insert_index_operation(t_prs *process, int index, t_ope new_ope);
+void		delete_index_operation(t_prs *process);
 
 // list_operate_a.c
 void		swap_a(t_node *list_a, t_node *list_b, t_prs *process);
@@ -152,10 +152,10 @@ void		put_reverse_rotate(t_prs *process);
 
 // process_optimize.c
 void		optimize_process(t_node *list_a, t_node *list_b, t_prs *process);
-int			opt_rr(t_node *list_a, t_node *list_b, t_prs *process, int index);
-int			opt_rrr(t_node *list_a, t_node *list_b, t_prs *process, int index);
-int			opt_ss(t_node *list_a, t_node *list_b, t_prs *process, int index);
-int			optimize_rm_extra(t_prs *process, int index);
+t_prs			*opt_rr(t_prs *process);
+t_prs			*opt_rrr(t_prs *process);
+t_prs			*opt_ss(t_prs *process);
+t_prs			*optimize_rm_extra(t_prs *process);
 
 // main.c
 void		show_list(t_node *dummy);

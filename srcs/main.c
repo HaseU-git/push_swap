@@ -67,8 +67,6 @@ int	main(int argc, char *argv[])
 	t_prs	*process;
 
 	arg_check(argc, argv);
-	list_a = NULL;
-	list_b = NULL;
 	list_a = init_node();
 	list_b = init_node();
 	arg_to_list(list_a, list_b, argc, argv);
@@ -81,7 +79,16 @@ int	main(int argc, char *argv[])
 		else
 			split_sort(list_a, list_b, process);
 	}
+//	update_prcs(list_a, list_b, process, RA);
+//	update_prcs(list_a, list_b, process, RRA);
+//	update_prcs(list_a, list_b, process, SA);
+//	update_prcs(list_a, list_b, process, SB);
+//	update_prcs(list_a, list_b, process, SB);
+//	update_prcs(list_a, list_b, process, SA);
+//	update_prcs(list_a, list_b, process, RB);
+//	update_prcs(list_a, list_b, process, RRB);
 	optimize_process(list_a, list_b, process);
 	print_process(process);
+	//system("leaks push_swap");
 	return (0);
 }

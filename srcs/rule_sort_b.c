@@ -57,10 +57,10 @@ void	rule_sort_four_b(t_node *list_a, t_node *list_b, t_prs *process)
 		ptr = ptr->next;
 		index = index + 1;
 	}
-	if (index < 3)
+	if (index < 2)
 		rotate_b_n(list_a, list_b, process, index);
-	else if (index == 3)
-		r_rotate_bn(list_a, list_b, process, 1);
+	else if (index >= 2)
+		r_rotate_bn(list_a, list_b, process, 4 - index);
 	push_a(list_a, list_b, process);
 	rule_sort_three_b(list_a, list_b, process);
 	push_b(list_a, list_b, process);
