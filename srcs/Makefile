@@ -2,31 +2,34 @@ NAME := push_swap
 CC := gcc
 CFLAG := -Wall -Wextra -Werror
 RM := rm -f
-SRCS :=	main.c\
-	free.c\
-	quick_sort.c\
-	quick_sort_utils.c\
-	rule_sort_a.c\
-	rule_sort_b.c\
-	rule_sort_utils.c\
-	list_utils.c\
-	list_create.c\
-	process_create.c\
-	process_optimize.c\
-	process_write.c\
-	process_print.c\
-	median.c\
-	list_operate_a.c\
-	list_operate_a_n.c\
-	list_operate_b.c\
-	list_operate_b_n.c\
-	arg_check.c\
-	arg_set.c\
-	arg_convert.c\
-	arg_utils.c\
-	ft_strlcpy.c
+SRCS :=	srcs/main.c\
+	srcs/free.c\
+	srcs/quick_sort.c\
+	srcs/quick_sort_utils.c\
+	srcs/rule_sort_a.c\
+	srcs/rule_sort_b.c\
+	srcs/rule_sort_utils.c\
+	srcs/list_utils.c\
+	srcs/list_create.c\
+	srcs/process_create.c\
+	srcs/process_optimize.c\
+	srcs/process_write.c\
+	srcs/process_print.c\
+	srcs/median.c\
+	srcs/list_operate_a.c\
+	srcs/list_operate_a_n.c\
+	srcs/list_operate_b.c\
+	srcs/list_operate_b_n.c\
+	srcs/arg_check.c\
+	srcs/arg_set.c\
+	srcs/arg_convert.c\
+	srcs/arg_utils.c\
+	srcs/ft_strlcpy.c
+HEADER := push_swap.h
+
 
 OBJS := $(SRCS:.c=.o)
+
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $@ $^

@@ -12,30 +12,6 @@
 
 #include "push_swap.h"
 
-void	show_list(t_node *dummy)
-{
-	t_node	*ptr;
-
-	ptr = dummy->next;
-	while (ptr != dummy)
-	{
-		printf("%d\n", ptr->key);
-		ptr = ptr->next;
-	}
-}
-
-void	show_ope(t_prs *dummy)
-{
-	t_prs	*ptr;
-
-	ptr = dummy->next;
-	while (ptr != dummy)
-	{
-		printf("%d\n", ptr->operation);
-		ptr = ptr->next;
-	}
-}
-
 void	list_null_check(t_node *list_a, t_node *list_b)
 {
 	if (list_a == NULL || list_b == NULL)
