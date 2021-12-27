@@ -25,7 +25,7 @@
 → printf2期をつける
 （nm -u push_swap）
 
-- [ ] メモリりーく
+- [x] メモリりーく
 → optimize_process()を使用すると、7ことかでやった時にメモリりーくしてしまう
 → 手順の最適化は新しくmallocせずにoperationを書き換えることで実装する  
 → optimize_processの実装方法をmallocを使用しない形に変更。  

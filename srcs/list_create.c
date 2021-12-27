@@ -12,13 +12,16 @@
 
 #include "push_swap.h"
 
-t_node	*init_node(void)
+t_node	*init_node(char **str_list)
 {
 	t_node	*dummy;
 
 	dummy = (t_node *)malloc(sizeof(t_node));
 	if (!dummy)
+	{
+		free_all_str_list(str_list);
 		return (NULL);
+	}
 	dummy->next = dummy;
 	dummy->prev = dummy;
 	return (dummy);

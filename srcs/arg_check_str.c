@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	arg_check(int argc, char *argv[])
+void	arg_check_str(int argc, char *argv[])
 {
 	int	is_error_flag;
 	int	i;
 
-	i = 1;
+	i = 0;
 	is_error_flag = 0;
 	if (argc == 1)
 		exit(0);
@@ -72,12 +72,12 @@ int	is_sorted(t_node *list_a)
 	return (flag_sorted);
 }
 
-void	arg_to_list(t_node *list_a, t_node *list_b, int argc, char *argv[])
+void	arg_to_list_str(t_node *list_a, t_node *list_b, int argc, char *argv[])
 {
 	int		i;
 	t_node	*new_node;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		new_node = set_node_last((int)str_to_num(argv[i]), list_a);

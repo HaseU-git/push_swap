@@ -47,6 +47,11 @@ typedef struct s_prs
 	struct s_prs	*next;
 }	t_prs;
 
+// arg_set.c
+int			len_args(char **str_list);
+char		**set_args(int argc, char *argv[], char **str_list);
+int			set_count(int argc, char **str_list);
+
 // arg.c
 void		arg_check(int argc, char *argv[]);
 int			is_dupulicated(t_node *list_a);
@@ -68,7 +73,7 @@ void		free_all_process(t_prs *dummy);
 void		free_two_lists(t_node *list_a, t_node *list_b);
 
 // list_create.c
-t_node		*init_node(void);
+t_node		*init_node(char **str_list);
 t_node		*set_node_first(int key, t_node *dummy);
 void		delete_node(t_node **t, t_node *dummy);
 void		replace_index_operation(t_prs *process, int index, t_ope new_ope);
@@ -152,12 +157,21 @@ void		put_reverse_rotate(t_prs *process);
 
 // process_optimize.c
 void		optimize_process(t_node *list_a, t_node *list_b, t_prs *process);
-t_prs			*opt_rr(t_prs *process);
-t_prs			*opt_rrr(t_prs *process);
-t_prs			*opt_ss(t_prs *process);
-t_prs			*optimize_rm_extra(t_prs *process);
+t_prs		*opt_rr(t_prs *process);
+t_prs		*opt_rrr(t_prs *process);
+t_prs		*opt_ss(t_prs *process);
+t_prs		*optimize_rm_extra(t_prs *process);
 
 // main.c
 void		show_list(t_node *dummy);
+
+// ft_split.c
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void		free_all_str_list(char **ret);
+void		free_str_list(char **ret, int j);
+int			len_str_list(char const *s, char c);
+int			len_el(char const *s, char c, int i);
+void		fill_ret(char const *s, char c, char **ret);
+char		**ft_split(char const *s, char c);
 
 #endif

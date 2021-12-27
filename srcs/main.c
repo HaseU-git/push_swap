@@ -46,18 +46,25 @@ void	list_null_check(t_node *list_a, t_node *list_b)
 			free_all_nodes(list_a);
 		else if (list_a == NULL && list_b == NULL)
 			free_two_lists(list_a, list_b);
-		write(1, "Error\n", 6);
-		exit(1);
+		put_error();
 	}
 	return ;
 }
 
-void	split_sort(t_node *list_a, t_node *list_b, t_prs *process)
+void	sort_list(t_node *list_a, t_node *list_b, t_prs *process, int argc)
 {
-	smaller_half_a_to_b(list_a, list_b, process);
-	quick_sort(list_a, list_b, process);
-	larger_half_a_to_b(list_a, list_b, process);
-	quick_sort(list_a, list_b, process);
+	if (is_sorted(list_a) != 1)
+	{
+		if (argc - 1 <= 5)
+			rule_sort_a(list_a, list_b, process);
+		else
+		{
+			smaller_half_a_to_b(list_a, list_b, process);
+			quick_sort(list_a, list_b, process);
+			larger_half_a_to_b(list_a, list_b, process);
+			quick_sort(list_a, list_b, process);
+		}
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -65,28 +72,17 @@ int	main(int argc, char *argv[])
 	t_node	*list_a;
 	t_node	*list_b;
 	t_prs	*process;
+	char	**str_list;
 
-	arg_check(argc, argv);
-	list_a = init_node();
-	list_b = init_node();
-	arg_to_list(list_a, list_b, argc, argv);
+	str_list = set_args(argc, argv, str_list);
+	argc = set_count(argc, str_list);
+	arg_check(argc, str_list);
+	list_a = init_node(str_list);
+	list_b = init_node(str_list);
 	list_null_check(list_a, list_b);
+	arg_to_list(list_a, list_b, argc, str_list);
 	process = init_process(list_a, list_b);
-	if (is_sorted(list_a) != 1)
-	{
-		if (argc - 1 <= 5)
-			rule_sort_a(list_a, list_b, process);
-		else
-			split_sort(list_a, list_b, process);
-	}
-//	update_prcs(list_a, list_b, process, RA);
-//	update_prcs(list_a, list_b, process, RRA);
-//	update_prcs(list_a, list_b, process, SA);
-//	update_prcs(list_a, list_b, process, SB);
-//	update_prcs(list_a, list_b, process, SB);
-//	update_prcs(list_a, list_b, process, SA);
-//	update_prcs(list_a, list_b, process, RB);
-//	update_prcs(list_a, list_b, process, RRB);
+	sort_list(list_a, list_b, process, argc);
 	optimize_process(list_a, list_b, process);
 	print_process(process);
 	//system("leaks push_swap");
